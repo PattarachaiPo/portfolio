@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="ผลงานและประสบการณ์ด้าน Full Stack Development, Project Management และ System Analysis">
+<title>IT Professional Portfolio | Modern Tech</title>
+<style>
+:root{--bg:#080d19;--panel:#101a2d;--panel2:#14213a;--text:#eef4ff;--muted:#9aabc6;--line:#263653;--blue:#61a8ff;--cyan:#55e0d0;--violet:#a995ff;--green:#72e0ae;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#172a4a 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,"Noto Sans Thai",system-ui,-apple-system,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#080d19d9;backdrop-filter:blur(16px);border-bottom:1px solid #26365388}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:.08em;font-size:13px}.brand span{color:var(--cyan)}.navlinks{display:flex;gap:24px;color:var(--muted);font-size:13px}.navlinks a:hover{color:var(--text)}.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:10px}
+.hero{padding:104px 0 76px;display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:center}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:.18em;font-weight:800}.hero h1{font-size:clamp(38px,6vw,66px);line-height:1.15;letter-spacing:-.04em;margin:18px 0}.hero h1 em{font-style:normal;color:var(--blue)}.lead{font-size:18px;color:#b6c5dc;max-width:680px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{padding:12px 18px;border-radius:12px;border:1px solid var(--line);font-weight:700;font-size:14px}.btn.primary{background:linear-gradient(120deg,#3988ed,#47c9c0);color:#06101c;border:0}.orb{aspect-ratio:1;border-radius:32px;background:linear-gradient(145deg,#152b4b,#0c1425);border:1px solid #345078;display:grid;place-items:center;position:relative;overflow:hidden}.orb:before,.orb:after{content:"";position:absolute;border:1px solid #4b82b777;border-radius:50%;width:75%;aspect-ratio:1}.orb:after{width:52%;border-color:#55e0d077}.orb-core{width:110px;height:110px;border-radius:30px;background:linear-gradient(145deg,#61a8ff,#55e0d0);display:grid;place-items:center;color:#06101c;font-size:38px;font-weight:900;box-shadow:0 0 80px #55c8df55;z-index:1}.orb-label{position:absolute;bottom:24px;color:#9eb5d5;font-size:11px;letter-spacing:.18em}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 78px}.metric{padding:20px;border:1px solid var(--line);background:#101a2dbb;border-radius:16px}.metric strong{display:block;font-size:17px}.metric span{font-size:12px;color:var(--muted)}
+section{padding:42px 0 72px;scroll-margin-top:82px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:26px}.kicker{color:var(--cyan);font-size:11px;letter-spacing:.16em;font-weight:800}.section-head h2{font-size:clamp(28px,4vw,40px);margin:6px 0 0;line-height:1.2}.section-head p{color:var(--muted);max-width:480px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(150deg,#14223a,#0e1728);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.25s}.card:hover{transform:translateY(-4px);border-color:#5386bd}.icon{width:46px;height:46px;border-radius:14px;background:#1c3558;color:var(--blue);display:grid;place-items:center;font-size:22px;margin-bottom:18px}.card:nth-child(2) .icon{color:var(--green);background:#173b37}.card:nth-child(3) .icon{color:var(--violet);background:#30294e}.card h3{font-size:20px;margin:0 0 10px}.card p{color:var(--muted);font-size:14px;margin:0 0 16px}.tags{display:flex;flex-wrap:wrap;gap:7px}.tag{font-size:11px;color:#c7d7ed;background:#1b2a42;border:1px solid #2b4162;padding:5px 9px;border-radius:99px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:26px;border-radius:var(--radius);border:1px solid var(--line);background:#101a2d}.panel h3{margin:0 0 16px;font-size:19px}.list{padding:0;margin:0;list-style:none}.list li{padding:11px 0;border-bottom:1px solid #263653;color:#c1cfe2;font-size:14px}.list li:last-child{border:0}.list li:before{content:"↳";color:var(--cyan);margin-right:10px}
+.stack{display:flex;flex-wrap:wrap;gap:10px}.stack span{padding:10px 14px;border-radius:12px;background:#12223b;border:1px solid #2a4265;color:#d7e6fb;font-size:13px}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{padding:20px;border:1px solid var(--line);border-radius:16px;background:#101a2d}.step b{color:var(--cyan);font-size:12px;letter-spacing:.12em}.step h4{margin:8px 0 4px}.step p{font-size:12px;color:var(--muted);margin:0}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:12px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.note{font-size:12px;color:#7f93b2;margin-top:18px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:72px}.orb{max-width:340px;margin:auto}.cards{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.split{grid-template-columns:1fr}.process{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:12px}.navlinks{display:none}.menu{display:block}.navlinks.open{display:flex;position:absolute;top:71px;left:0;right:0;padding:18px 24px;background:#080d19;flex-direction:column;border-bottom:1px solid var(--line)}}
+@media(max-width:480px){.wrap{width:min(100% - 28px,1120px)}.hero h1{font-size:40px}.process{grid-template-columns:1fr}.card,.panel{padding:20px}}
+
+.timeline{display:grid;gap:14px;position:relative}
+.job{display:grid;grid-template-columns:190px 1fr;gap:22px;padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#14223a,#0e1728)}
+.job-date{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.08em}
+.job h3{margin:0 0 5px;font-size:20px}
+.job .role{color:#9eb5d5;font-size:13px;margin-bottom:12px}
+.job p{color:var(--muted);font-size:14px;margin:0 0 12px}
+.job ul{margin:0;padding-left:18px;color:#c1cfe2;font-size:13px}
+.job li{padding:3px 0}
+@media(max-width:700px){.job{grid-template-columns:1fr;gap:8px}}
+
+
+.contact-section{padding-top:10px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.contact-item{padding:17px 19px;border:1px solid var(--line);background:#101a2d;border-radius:15px;min-width:0}
+.contact-item span,.contact-item small{display:block;color:var(--muted);font-size:11px}
+.contact-item strong{display:block;font-size:14px;overflow-wrap:anywhere;margin-top:4px}
+.contact-item small{margin-top:2px}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.contact-grid{grid-template-columns:1fr}}
+@media print{
+  @page{size:A4;margin:15mm 14mm 16mm}
+  html{scroll-behavior:auto}
+  body{background:#080d19!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:10pt}
+  header{position:static}
+  nav{height:42px}
+  .navlinks,.menu,.actions{display:none!important}
+  .wrap{width:100%;max-width:none}
+  .hero{padding:26px 0 22px;grid-template-columns:1.3fr .7fr;gap:20px}
+  .hero h1{font-size:34px}
+  .lead{font-size:12px}
+  .orb{max-width:180px}
+  .metrics{margin:8px 0 20px;gap:8px}
+  .metric{padding:12px}
+  section{padding:20px 0 24px;scroll-margin:0}
+  .section-head{margin-bottom:14px}
+  .section-head h2{font-size:23px}
+  .section-head p{font-size:10px}
+  .cards{gap:9px}
+  .card,.panel{padding:14px;border-radius:13px}
+  .card h3,.job h3{font-size:15px}
+  .card p,.list li{font-size:10px}
+  .job{grid-template-columns:145px 1fr;gap:14px;padding:14px;border-radius:13px;break-inside:avoid}
+  .job p{font-size:10px}
+  .job ul{font-size:9.5px}
+  .job-date,.job .role{font-size:10px}
+  .contact-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .contact-item{padding:10px}
+  .contact-item strong{font-size:10px}
+  .contact-item span,.contact-item small{font-size:8px}
+  .process{gap:8px}
+  .step{padding:12px}
+  .note{font-size:9px}
+  footer{padding:14px 0}
+  a{color:inherit}
+}
+
+
+@media print{
+  @page{size:A4;margin:11mm 12mm 12mm}
+  html,body{width:100%!important;margin:0!important;padding:0!important;overflow:visible!important}
+  .wrap{width:100%!important;max-width:none!important;margin:0!important}
+  header .wrap{width:100%!important}
+  .hero{grid-template-columns:1fr .45fr;gap:14px;padding:20px 0}
+  .hero h1{font-size:30px}
+  .orb{max-width:145px}
+  .contact-section{break-after:page}
+  #expertise{break-before:page}
+  .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card{break-inside:avoid;padding:12px}
+  #career{break-before:page}
+  .job{break-inside:avoid}
+  #experience{break-before:page}
+  #stack,#process{break-inside:avoid}
+  .section-head{align-items:flex-end}
+  .section-head p{max-width:38%;font-size:9px}
+  .process{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .step{break-inside:avoid;padding:10px}
+  footer{break-before:avoid}
+}
+
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="brand" href="#top">IT<span>.</span>PORTFOLIO</a>
+<div class="navlinks" id="navlinks"><a href="#expertise">ความเชี่ยวชาญ</a><a href="#contact">ติดต่อ</a><a href="#career">ประวัติการทำงาน</a><a href="#experience">ผลงานโครงการ</a><a href="#stack">Technology Stack</a><a href="#process">แนวทางทำงาน</a></div>
+<button class="menu" id="menuBtn" aria-label="เปิดเมนู">เมนู</button>
+</nav></div></header>
+<main id="top" class="wrap">
+<div class="hero">
+<div>
+<div class="eyebrow">FULL STACK DEVELOPMENT · PROJECT MANAGEMENT · SYSTEM ANALYSIS</div>
+<div class="eyebrow" style="margin-bottom:10px">PATTARACHAI POTHONG · นายภัทรชัย โพธิ์ทอง</div><h1>จากแนวคิด<br>สู่ระบบที่<em>ใช้งานได้จริง</em></h1>
+<p class="lead">ผสานความเข้าใจด้านธุรกิจ การวิเคราะห์ระบบ และทักษะการพัฒนา เพื่อเปลี่ยนความต้องการให้เป็นโซลูชันดิจิทัลที่ใช้งานได้จริง ตั้งแต่การวางแผน ออกแบบ พัฒนา ไปจนถึงการส่งมอบโครงการ</p>
+<div class="actions"><a class="btn primary" href="#expertise">สำรวจความเชี่ยวชาญ</a><a class="btn" href="#experience">ดูประสบการณ์</a></div>
+</div>
+<div class="orb"><div class="orb-core">&lt;/&gt;</div><div class="orb-label">DESIGN · BUILD · DELIVER</div></div>
+</div>
+
+<section id="contact" class="contact-section">
+  <div class="section-head"><div><div class="kicker">PROFILE & CONTACT</div><h2>ข้อมูลส่วนตัวและการติดต่อ</h2></div>
+  <p>System Analyst · Project Manager · Full Stack Development</p></div>
+  <div class="contact-grid">
+    <div class="contact-item"><span>ชื่อ–นามสกุล</span><strong>นายภัทรชัย โพธิ์ทอง</strong><small>PATTARACHAI POTHONG</small></div>
+    <div class="contact-item"><span>โทรศัพท์</span><strong><a href="tel:0654249397">065-424-9397</a></strong></div>
+    <div class="contact-item"><span>อีเมล</span><strong><a href="mailto:Pattarachai.po@gmail.com">Pattarachai.po@gmail.com</a></strong></div>
+    <div class="contact-item"><span>LINE ID</span><strong>0645519597</strong></div>
+    <div class="contact-item"><span>ที่อยู่</span><strong>Nonthaburi, Thailand</strong></div>
+  </div>
+</section>
+
+<div class="metrics">
+<div class="metric"><strong>End-to-End</strong><span>ครอบคลุมวงจรการพัฒนาระบบ</span></div>
+<div class="metric"><strong>Business + Technology</strong><span>เชื่อมโยงโจทย์ธุรกิจกับเทคโนโลยี</span></div>
+<div class="metric"><strong>Project Delivery</strong><span>มุ่งเน้นคุณภาพและผลลัพธ์ของโครงการ</span></div>
+</div>
+
+<section id="expertise">
+<div class="section-head"><div><div class="kicker">CORE EXPERTISE / 01—03</div><h2>ความเชี่ยวชาญหลัก</h2></div><p>สามบทบาทที่ทำงานเชื่อมโยงกัน เพื่อให้การพัฒนาระบบตอบโจทย์ทั้งผู้ใช้งานและเป้าหมายทางธุรกิจ</p></div>
+<div class="cards">
+<article class="card"><div class="icon">⌘</div><h3>Full Stack Development</h3><p>พัฒนา Web Application แบบครบวงจร ตั้งแต่ Frontend, Backend, Database ไปจนถึงการเชื่อมต่อ API และระบบภายนอก</p><ul class="list"><li>Government Information Systems</li><li>Payment Gateway & API Integration</li><li>Mini ERP & Business Applications</li><li>Booking & Reservation Systems</li><li>Web Application Development</li></ul></article>
+<article class="card"><div class="icon">◈</div><h3>Project Management</h3><p>บริหารโครงการด้าน IT ตั้งแต่กำหนดขอบเขต วางแผน ประสานงานทีม ติดตามความคืบหน้า และควบคุมการส่งมอบ</p><ul class="list"><li>Project Planning & Scheduling</li><li>Scope & Requirement Management</li><li>Team & Stakeholder Coordination</li><li>Progress, Risk & Issue Tracking</li><li>UAT & Project Delivery</li></ul></article>
+<article class="card"><div class="icon">⌕</div><h3>System Analysis</h3><p>วิเคราะห์ความต้องการทางธุรกิจและแปลงเป็นข้อกำหนด กระบวนการ และเอกสารทางเทคนิคสำหรับทีมพัฒนา</p><ul class="list"><li>Business Requirement Analysis</li><li>As-Is / To-Be Process Analysis</li><li>Functional & Non-functional Requirements</li><li>System Flow & API Specification</li><li>Database & Workflow Design</li></ul></article>
+</div>
+</section>
+
+
+<section id="career">
+<div class="section-head"><div><div class="kicker">CAREER EXPERIENCE</div><h2>ประสบการณ์การทำงาน</h2></div><p>ประสบการณ์ด้านการพัฒนาระบบ การวิเคราะห์กระบวนการธุรกิจ และการทำงานร่วมกับทีมโครงการในบริบทองค์กร</p></div>
+<div class="timeline">
+<article class="job">
+<div><div class="job-date">SCB</div><div class="role">Senior System Analyst / System Analyst</div></div>
+<div><h3>iSmart Onboarding Platform</h3><p>วิเคราะห์และออกแบบระบบสำหรับกระบวนการ Onboarding และการเปิดบัญชี โดยเชื่อมโยงความต้องการทางธุรกิจกับข้อกำหนดสำหรับทีมพัฒนา</p>
+<ul><li>วิเคราะห์ Gap และออกแบบ To-Be Process</li><li>จัดทำ System Specification และเอกสารบน Confluence</li><li>สนับสนุนการพัฒนาและ Dev Demo</li><li>ทำงานกับฟังก์ชัน FCD Open Account, Product Detail และ Marker Review</li><li>ติดตาม Event Log และ Share Store Checks</li></ul></div>
+</article>
+<article class="job">
+<div><div class="job-date">MTL · เมืองไทยประกันชีวิต</div><div class="role">Core Insurance · Business / System Analysis</div></div>
+<div><h3>Legacy Insurance Migration & Accounting Knock Process</h3><p>วิเคราะห์กระบวนการ Core Insurance และงาน Migration จากระบบประกันภัยเดิม (Legacy Insurance System) ไปสู่ระบบประกันภัยใหม่ พร้อมวิเคราะห์กระบวนการ Knock ทางบัญชีและการเชื่อมโยงข้อมูลระหว่างระบบ</p>
+<ul><li>วิเคราะห์และสนับสนุนงาน Migration จาก Legacy Insurance System ไปยัง New Insurance System</li><li>วิเคราะห์กระบวนการ Core Insurance, Invoice & Billing, POS, Cashier, Core Policy และ Agent-Broker Service</li><li>ทำความเข้าใจการเชื่อมต่อกับ AS400 และ Finance Manual Transaction</li><li>ออกแบบ Flow ครอบคลุม Source Documents, MT Account, Knock Processing และ Result</li><li>วิเคราะห์การจับคู่ Debit / Credit การตรวจสอบยอดสมดุล และการสร้าง Knock Number</li><li>เชื่อมโยง Cashier Receipt, Disbursement Voucher และ GL Posting</li></ul></div>
+</article>
+<article class="job">
+<div><div class="job-date">N HEALTH · BANGKOK HEALTH</div><div class="role">System Analyst / Project Coordination – ERP Healthcare</div></div>
+<div><h3>ERP – Healthcare Management</h3><p>วิเคราะห์ความต้องการจากหน่วยงานคลินิก การเงิน และปฏิบัติการ พร้อมแปลง Healthcare Workflow ให้เป็นข้อกำหนดและแนวทางพัฒนาระบบ ERP</p>
+<ul><li>เก็บและวิเคราะห์ Business Requirements จากผู้ใช้งานหลายหน่วยงาน</li><li>แปลง Workflow เป็น User Stories และ Use Cases</li><li>จัดทำ FSD และ SRS เพื่อสื่อสารกับทีมพัฒนา</li><li>ประสานงานระหว่างผู้ใช้งานและทีมพัฒนา รวมถึงสนับสนุน UAT</li><li>วางแผนและติดตาม Timeline, ความคืบหน้า, ความเสี่ยง และประเด็นดำเนินการของโครงการ</li></ul></div>
+</article>
+
+<article class="job">
+<div><div class="job-date">2025 · PROJECT</div><div class="role">Project Manager · Freelance</div></div>
+<div><h3>Automation Accounting Platform</h3><p>บริหารโครงการพัฒนาแพลตฟอร์ม Automation สำหรับงานบัญชี ตั้งแต่การเก็บความต้องการ วางแผนงาน ติดตามความคืบหน้า และประสานงานผู้เกี่ยวข้อง</p>
+<ul><li>วิเคราะห์ Requirement และกำหนดขอบเขตโครงการ</li><li>ประสานงานระหว่าง Business, Technical และทีมพัฒนา</li><li>ติดตามแผนงาน ความคืบหน้า และสื่อสารสถานะโครงการเป็นรอบ</li></ul></div>
+</article>
+<article class="job">
+<div><div class="job-date">2023 – 2024</div><div class="role">Project Manager</div></div>
+<div><h3>M Enterprise Union Group</h3><p>บริหารโครงการซอฟต์แวร์และโครงสร้างพื้นฐาน IT รวมถึงดูแลระบบสารสนเทศและการดำเนินงานของธุรกิจในต่างประเทศ</p>
+<ul><li>วางแผนและบริหารโครงการพัฒนาระบบสารสนเทศและ Business Applications</li><li>ดูแลการใช้งานระบบและโครงสร้างพื้นฐานขององค์กร</li><li>ประสานการดำเนินงานใน สปป.ลาว และสนับสนุนแผนขยายธุรกิจ</li></ul></div>
+</article>
+<article class="job">
+<div><div class="job-date">2019 – 2022</div><div class="role">IT Manager</div></div>
+<div><h3>Effort Union Group Co., Ltd.</h3><p>บริหารจัดการระบบสารสนเทศและทรัพยากรด้าน IT ขององค์กร พร้อมกำกับดูแลการพัฒนาระบบและโครงสร้างพื้นฐาน</p>
+<ul><li>ดูแลระบบสารสนเทศและแอปพลิเคชันภายในองค์กร</li><li>บริหารและประสานทรัพยากรบุคคลที่เกี่ยวข้องกับโครงการ IT</li><li>ออกแบบและพัฒนาระบบงาน รวมถึงโครงสร้างพื้นฐานที่สนับสนุนธุรกิจ</li></ul></div>
+</article>
+<article class="job">
+<div><div class="job-date">2016 – 2018</div><div class="role">Senior Developer</div></div>
+<div><h3>The Brain Stem Co., Ltd.</h3><p>พัฒนาระบบสารสนเทศและแอปพลิเคชัน พร้อมสนับสนุนการวิเคราะห์ ออกแบบ และประสานงานโครงการ IT ทั้งภาครัฐและเอกชน</p>
+<ul><li>พัฒนาระบบงานภายในองค์กรและระบบตามความต้องการของโครงการ</li><li>วิเคราะห์และออกแบบระบบสารสนเทศ</li><li>สนับสนุน Project Manager ในการบริหารโครงการและประสานงานหน่วยงานภายนอก</li></ul></div>
+</article>
+</div>
+</section>
+
+<section id="experience">
+<div class="section-head"><div><div class="kicker">PROJECT EXPERIENCE</div><h2>ประสบการณ์และขอบเขตงาน</h2></div><p>ตัวอย่างประเภทโครงการที่มีประสบการณ์พัฒนา วิเคราะห์ หรือมีส่วนร่วมในการบริหารจัดการ</p></div>
+<div class="split">
+<div class="panel"><h3>Development Projects</h3><ul class="list"><li><b>ระบบงานภาครัฐ</b> — พัฒนาระบบสารสนเทศและฟังก์ชันตามข้อกำหนดโครงการ</li><li><b>Payment Gateway</b> — เชื่อมต่อ API สำหรับกระบวนการชำระเงินและแลกเปลี่ยนข้อมูล</li><li><b>Mini ERP</b> — ระบบสนับสนุนกระบวนการทำงานและการจัดการข้อมูลภายในองค์กร</li><li><b>Web Application</b> — ออกแบบและพัฒนาเว็บแอปพลิเคชันตามโจทย์ธุรกิจ</li><li><b>Booking & Reservation</b> — ระบบจอง จัดการรายการ และบริหารสถานะการสำรอง</li></ul></div>
+<div class="panel"><h3>Project Documentation</h3><ul class="list"><li><b>SRS</b> — Software Requirements Specification</li><li><b>Inception Report</b> — เอกสารเริ่มต้นโครงการและกรอบการดำเนินงาน</li><li><b>Interim Report</b> — รายงานความก้าวหน้าและผลการดำเนินงานระหว่างโครงการ</li><li><b>Final Report</b> — รายงานสรุปผลการดำเนินงานและการส่งมอบ</li><li><b>Technical Documents</b> — System Specification, Workflow และ API Documentation</li></ul></div>
+</div>
+</section>
+
+<section id="stack">
+<div class="section-head"><div><div class="kicker">TECHNOLOGY</div><h2>Technology Stack</h2></div><p>เครื่องมือและเทคโนโลยีที่ใช้ในการพัฒนาและออกแบบระบบ</p></div>
+<div class="panel"><div class="stack"><span>PHP</span><span>CodeIgniter</span><span>JavaScript</span><span>jQuery</span><span>Bootstrap</span><span>MySQL</span><span>PostgreSQL</span><span>Python</span><span>Frappe Framework</span><span>RESTful API</span><span>Database Design</span><span>Web Application</span></div></div>
+</section>
+
+<section id="process">
+<div class="section-head"><div><div class="kicker">WORKING APPROACH</div><h2>แนวทางการทำงาน</h2></div><p>มองการพัฒนาระบบเป็นกระบวนการต่อเนื่อง โดยให้ความสำคัญกับความเข้าใจที่ตรงกันและคุณภาพของผลลัพธ์</p></div>
+<div class="process">
+<div class="step"><b>01 / DISCOVER</b><h4>ทำความเข้าใจ</h4><p>เก็บ Requirement วิเคราะห์ปัญหา และกำหนดเป้าหมาย</p></div>
+<div class="step"><b>02 / DESIGN</b><h4>วิเคราะห์และออกแบบ</h4><p>ออกแบบ Workflow, Database, API และ System Specification</p></div>
+<div class="step"><b>03 / DEVELOP</b><h4>พัฒนาและทดสอบ</h4><p>พัฒนาระบบ เชื่อมต่อบริการ และตรวจสอบคุณภาพ</p></div>
+<div class="step"><b>04 / DELIVER</b><h4>ส่งมอบและปรับปรุง</h4><p>สนับสนุน UAT จัดทำเอกสาร และส่งมอบระบบ</p></div>
+</div>
+<p class="note">หมายเหตุ: เนื้อหาในหน้านี้เป็นโครง Portfolio ฉบับเริ่มต้น สามารถเพิ่มชื่อโครงการจริง บทบาทที่รับผิดชอบ ผลลัพธ์ และภาพหน้าจอผลงานได้ โดยไม่เปิดเผยข้อมูลที่เป็นความลับขององค์กร</p>
+</section>
+</main>
+<footer><div class="wrap foot"><span>© <span id="year"></span> IT Professional Portfolio</span><span>Built around Technology · Analysis · Delivery</span></div></footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const btn=document.getElementById('menuBtn'),links=document.getElementById('navlinks');
+btn.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+</script>
+</body></html>
