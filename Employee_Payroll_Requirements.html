@@ -1,6 +1,88 @@
 <!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Owner-signed-off version 2.0 requirements for บ้านคลองค้าไม้ Employee & Payroll Management System"><title>บ้านคลองค้าไม้ | Employee & Payroll Requirements v2.0</title><style>
 :root{--navy:#14243a;--ink:#202b3c;--muted:#66758a;--line:#e3e9f0;--canvas:#f4f7fb}*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.75 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif}header{background:linear-gradient(120deg,#14243a,#244d75);color:white;padding:42px max(24px,calc((100vw - 1120px)/2))}header h1{font-size:clamp(26px,4vw,40px);line-height:1.25;margin:12px 0}header p{color:#d4dfec}.badge{display:inline-block;border:1px solid #ffffff55;background:#ffffff20;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:700}.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:#e4edf7}main{max-width:1120px;margin:28px auto;padding:0 22px 60px}article{background:white;border:1px solid var(--line);border-radius:16px;padding:clamp(20px,4vw,48px);box-shadow:0 16px 48px #16273e0f}h1,h2,h3,h4{color:var(--navy);line-height:1.3}h2{margin-top:42px;padding-bottom:10px;border-bottom:1px solid var(--line)}h3{margin-top:28px}p{margin:12px 0}li{margin:5px 0}table{border-collapse:collapse;width:100%;font-size:13px;min-width:640px}th{background:#edf3fa;color:var(--navy);text-align:left}th,td{border:1px solid var(--line);padding:9px 11px;vertical-align:top}.table-wrap{overflow-x:auto;margin:16px 0}code{background:#f0f4f8;border-radius:4px;padding:2px 5px}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{max-width:1120px;margin:auto;padding:0 22px 35px;color:var(--muted);font-size:12px}@media(max-width:700px){header{padding:30px 20px}main{padding:0 12px 40px}article{padding:18px}}@media print{body{background:white}header{background:white;color:#14243a;border-bottom:2px solid #14243a}header p,.meta{color:#334}article{box-shadow:none;border:0}main{margin:0;max-width:none}}
-</style></head><body><header><div class="badge">OWNER SIGN-OFF · VERSION 2.0 · SCOPED IMPLEMENTATION</div><h1>บ้านคลองค้าไม้<br>Employee & Payroll Management System</h1><p>Requirements Baseline – approved scope and business decisions, with remaining calculation and technical gates explicitly tracked.</p><div class="meta"><span>Version: 2.0</span><span>Date: 26 November 2026</span><span>Status: Owner Sign-off Received</span></div></header><main><article><h1 id="requirement-document-บ้านคลองค้าไม้-employee-payroll-management-system">Requirement Document: บ้านคลองค้าไม้ – Employee &amp; Payroll Management System</h1>
+
+/* Left-hand contents index */
+main{display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;max-width:1440px;align-items:start}
+.toc-sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 14px;box-shadow:0 8px 28px #16273e0a}
+.toc-title{font-size:15px;font-weight:800;color:var(--navy);padding:0 9px 10px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.toc-sidebar nav,.toc-mobile nav{display:flex;flex-direction:column;gap:2px}
+.toc-sidebar a,.toc-mobile a{display:block;color:#42536a;text-decoration:none;font-size:12px;line-height:1.45;padding:6px 9px;border-radius:6px}
+.toc-sidebar a:hover,.toc-mobile a:hover{background:#edf3fa;color:var(--navy)}
+.toc-sidebar a.sub,.toc-mobile a.sub{padding-left:20px;color:#718096;font-size:11px}
+main article{min-width:0}
+.toc-mobile{display:none}
+@media(max-width:900px){main{grid-template-columns:210px minmax(0,1fr);gap:14px}}
+@media(max-width:700px){main{display:block}.toc-sidebar{display:none}.toc-mobile{display:block;background:white;border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin:0 0 14px}.toc-mobile summary{font-weight:700;color:var(--navy);cursor:pointer}.toc-mobile nav{max-height:55vh;overflow:auto;margin-top:10px}.toc-mobile a{font-size:13px}}
+@media print{main{display:block;max-width:none}.toc-sidebar,.toc-mobile{display:none}}
+</style></head><body><header><div class="badge">OWNER SIGN-OFF · VERSION 2.0 · SCOPED IMPLEMENTATION</div><h1>บ้านคลองค้าไม้<br>Employee & Payroll Management System</h1><p>Requirements Baseline – approved scope and business decisions, with remaining calculation and technical gates explicitly tracked.</p><div class="meta"><span>Version: 2.0</span><span>Date: 26 November 2026</span><span>Status: Owner Sign-off Received</span></div></header><main><aside class="toc-sidebar" aria-label="สารบัญ"><div class="toc-title">สารบัญ</div><nav><a href="#1-project-overview">1. Project Overview</a>
+<a class="sub" href="#1-1-business-context">1.1 Business Context</a>
+<a class="sub" href="#1-2-objectives">1.2 Objectives</a>
+<a href="#2-scope">2. Scope</a>
+<a class="sub" href="#2-1-in-scope">2.1 In Scope</a>
+<a class="sub" href="#2-2-out-of-scope-initial-release">2.2 Out of Scope (Initial Release)</a>
+<a href="#3-user-roles">3. User Roles</a>
+<a href="#4-functional-requirements">4. Functional Requirements</a>
+<a class="sub" href="#fr-emp-employee-management">FR-EMP: Employee Management</a>
+<a class="sub" href="#fr-att-attendance-work-record">FR-ATT: Attendance &amp; Work Record</a>
+<a class="sub" href="#fr-leave-leave-management">FR-LEAVE: Leave Management</a>
+<a class="sub" href="#fr-abs-absence-exception-management">FR-ABS: Absence &amp; Exception Management</a>
+<a class="sub" href="#fr-adv-salary-advance">FR-ADV: Salary Advance</a>
+<a class="sub" href="#fr-pay-configurable-payroll-processing">FR-PAY: Configurable Payroll Processing</a>
+<a class="sub" href="#fr-pay-calculation-approved-architecture-rules-pending">FR-PAY Calculation – Approved Architecture / Rules Pending</a>
+<a class="sub" href="#fr-ps-payslip">FR-PS: Payslip</a>
+<a class="sub" href="#fr-rpt-reports-dashboard">FR-RPT: Reports &amp; Dashboard</a>
+<a href="#5-owner-approved-business-rules-sign-off-v2-0">5. Owner-approved Business Rules (Sign-off v2.0)</a>
+<a class="sub" href="#payroll-duplicate-safe-copy-behavior">Payroll Duplicate – Safe-copy behavior</a>
+<a class="sub" href="#salary-advance-full-outstanding-balance">Salary Advance – Full Outstanding Balance</a>
+<a href="#6-main-workflows">6. Main Workflows</a>
+<a class="sub" href="#6-1-leave-workflow">6.1 Leave Workflow</a>
+<a class="sub" href="#6-2-absence-workflow">6.2 Absence Workflow</a>
+<a class="sub" href="#6-3-salary-advance-workflow">6.3 Salary Advance Workflow</a>
+<a class="sub" href="#6-4-payroll-workflow">6.4 Payroll Workflow</a>
+<a href="#7-non-functional-requirements">7. Non-Functional Requirements</a>
+<a href="#8-proposed-screens-modules">8. Proposed Screens / Modules</a>
+<a href="#9-data-entities-initial">9. Data Entities (Initial)</a>
+<a href="#10-system-independence">10. System Independence</a>
+<a href="#11-acceptance-criteria">11. Acceptance Criteria</a>
+<a href="#12-remaining-open-questions-must-resolve-before-dependent-tasks-become-ready">12. Remaining Open Questions – Must Resolve Before Dependent Tasks Become READY</a>
+<a href="#13-recommended-implementation-baseline">13. Recommended Implementation Baseline</a>
+<a href="#14-owner-sign-off-version-2-0">14. Owner Sign-off – Version 2.0</a>
+<a class="sub" href="#approved-baseline">Approved baseline</a>
+<a class="sub" href="#sign-off-limitations">Sign-off limitations</a></nav></aside><details class="toc-mobile"><summary>สารบัญ / Contents</summary><nav><a href="#1-project-overview">1. Project Overview</a>
+<a class="sub" href="#1-1-business-context">1.1 Business Context</a>
+<a class="sub" href="#1-2-objectives">1.2 Objectives</a>
+<a href="#2-scope">2. Scope</a>
+<a class="sub" href="#2-1-in-scope">2.1 In Scope</a>
+<a class="sub" href="#2-2-out-of-scope-initial-release">2.2 Out of Scope (Initial Release)</a>
+<a href="#3-user-roles">3. User Roles</a>
+<a href="#4-functional-requirements">4. Functional Requirements</a>
+<a class="sub" href="#fr-emp-employee-management">FR-EMP: Employee Management</a>
+<a class="sub" href="#fr-att-attendance-work-record">FR-ATT: Attendance &amp; Work Record</a>
+<a class="sub" href="#fr-leave-leave-management">FR-LEAVE: Leave Management</a>
+<a class="sub" href="#fr-abs-absence-exception-management">FR-ABS: Absence &amp; Exception Management</a>
+<a class="sub" href="#fr-adv-salary-advance">FR-ADV: Salary Advance</a>
+<a class="sub" href="#fr-pay-configurable-payroll-processing">FR-PAY: Configurable Payroll Processing</a>
+<a class="sub" href="#fr-pay-calculation-approved-architecture-rules-pending">FR-PAY Calculation – Approved Architecture / Rules Pending</a>
+<a class="sub" href="#fr-ps-payslip">FR-PS: Payslip</a>
+<a class="sub" href="#fr-rpt-reports-dashboard">FR-RPT: Reports &amp; Dashboard</a>
+<a href="#5-owner-approved-business-rules-sign-off-v2-0">5. Owner-approved Business Rules (Sign-off v2.0)</a>
+<a class="sub" href="#payroll-duplicate-safe-copy-behavior">Payroll Duplicate – Safe-copy behavior</a>
+<a class="sub" href="#salary-advance-full-outstanding-balance">Salary Advance – Full Outstanding Balance</a>
+<a href="#6-main-workflows">6. Main Workflows</a>
+<a class="sub" href="#6-1-leave-workflow">6.1 Leave Workflow</a>
+<a class="sub" href="#6-2-absence-workflow">6.2 Absence Workflow</a>
+<a class="sub" href="#6-3-salary-advance-workflow">6.3 Salary Advance Workflow</a>
+<a class="sub" href="#6-4-payroll-workflow">6.4 Payroll Workflow</a>
+<a href="#7-non-functional-requirements">7. Non-Functional Requirements</a>
+<a href="#8-proposed-screens-modules">8. Proposed Screens / Modules</a>
+<a href="#9-data-entities-initial">9. Data Entities (Initial)</a>
+<a href="#10-system-independence">10. System Independence</a>
+<a href="#11-acceptance-criteria">11. Acceptance Criteria</a>
+<a href="#12-remaining-open-questions-must-resolve-before-dependent-tasks-become-ready">12. Remaining Open Questions – Must Resolve Before Dependent Tasks Become READY</a>
+<a href="#13-recommended-implementation-baseline">13. Recommended Implementation Baseline</a>
+<a href="#14-owner-sign-off-version-2-0">14. Owner Sign-off – Version 2.0</a>
+<a class="sub" href="#approved-baseline">Approved baseline</a>
+<a class="sub" href="#sign-off-limitations">Sign-off limitations</a></nav></details><article><h1 id="requirement-document-บ้านคลองค้าไม้-employee-payroll-management-system">Requirement Document: บ้านคลองค้าไม้ – Employee &amp; Payroll Management System</h1>
 <p><strong>Document Version:</strong> 2.0 (Owner Sign-off Baseline – Scoped Implementation) <strong>Date:</strong> 26 November 2026 <strong>Project:</strong> บ้านคลองค้าไม้ <strong>Document Status:</strong> OWNER SIGN-OFF – Approved baseline with scoped implementation authorization; unresolved payroll and technical rules remain gated</p>
 <hr>
 <h2 id="1-project-overview">1. Project Overview</h2>
