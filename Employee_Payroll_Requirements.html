@@ -1,422 +1,1030 @@
 <!doctype html>
-<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>บ้านคลองค้าไม้ – Employee &amp; Payroll Management System Requirements</title>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Requirement Document สำหรับระบบ Employee & Payroll Management ของบ้านคลองค้าไม้">
+<title>บ้านคลองค้าไม้ | Employee & Payroll Requirements</title>
 <style>
-:root{color-scheme:light;--ink:#20242b;--line:#d9dee7;--accent:#17365d;--paper:#fff;--bg:#f3f5f8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif}
-main{max-width:1100px;margin:32px auto;padding:48px 56px;background:var(--paper);box-shadow:0 8px 32px #18223012}
-h1{font-size:30px;line-height:1.3;color:var(--accent);margin:0 0 18px}h2{font-size:22px;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:8px;margin:34px 0 14px}h3{font-size:17px;margin:24px 0 8px;color:#344054}
-p{margin:8px 0 12px}ul,ol{padding-left:26px}li{margin:4px 0}table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:14px;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;min-width:110px}th{background:#eef2f7;color:#26364a;font-weight:650}hr{border:0;border-top:1px solid var(--line);margin:26px 0}
-@media(max-width:700px){main{margin:0;padding:26px 18px}h1{font-size:24px}h2{font-size:19px}}
-@media print{body{background:#fff}main{margin:0;max-width:none;padding:16mm;box-shadow:none}h2,h3{break-after:avoid}table{break-inside:avoid}}
-</style></head><body><main><h1>Requirement Document: บ้านคลองค้าไม้ – Employee &amp; Payroll Management System</h1>
-<p>**Document Version:** 1.0 (Draft for Review)  </p>
-<p>**Date:** 26 November 2026  </p>
-<p>**Project:** บ้านคลองค้าไม้</p>
-<p>**Document Status:** Requirement Baseline – Pending Business Rule Confirmation</p>
-<hr>
-<h2>1. Project Overview</h2>
-<p>พัฒนาระบบบริหารพนักงานและเงินเดือนสำหรับ **บ้านคลองค้าไม้** รองรับการจัดเก็บข้อมูลพนักงาน การลงเวลา การลา การขาดงาน การเบิกเงินล่วงหน้า และการคำนวณเงินเดือน</p>
+:root {
+  --navy:#14243a; --navy2:#1e3654; --ink:#202b3c; --muted:#66758a;
+  --line:#e3e9f0; --paper:#fff; --canvas:#f4f7fb; --blue:#3267d6;
+  --teal:#168b83; --gold:#c28b2c; --shadow:0 16px 48px rgba(22,39,62,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:28px}
+body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.75 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{height:62px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1440px)/2));position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:11px;font-weight:750;color:var(--navy);letter-spacing:.01em}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(145deg,#1e3654,#3972c8);display:grid;place-items:center;color:white;font-size:16px;font-weight:800}
+.top-actions{display:flex;gap:9px;align-items:center}
+.btn{border:1px solid var(--line);border-radius:9px;background:white;color:var(--navy);padding:8px 13px;font:600 13px inherit;cursor:pointer}
+.btn.primary{background:var(--navy);color:white;border-color:var(--navy)}
+.btn:hover{filter:brightness(1.08)}
+.hero-wrap{background:linear-gradient(120deg,#14243a 0%,#1c385a 60%,#244d75 100%);padding:54px 24px 74px;position:relative;overflow:hidden}
+.hero-wrap:after{content:"";position:absolute;width:500px;height:500px;border:1px solid rgba(255,255,255,.09);border-radius:50%;right:-110px;top:-260px;box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.02)}
+.hero{max-width:1260px;margin:auto;position:relative;z-index:1;color:white}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:#b9d3f6;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:99px;padding:6px 11px}
+.hero h1{font-size:clamp(29px,4vw,44px);line-height:1.2;letter-spacing:-.035em;margin:18px 0 10px;color:white}
+.hero p{max-width:780px;color:#d4dfec;margin:0;font-size:16px}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;color:#d8e4f2;font-size:12px}
+.meta-row span{display:flex;gap:7px;align-items:center}
+.meta-row b{color:white;font-weight:650}
+.status-pill{display:inline-block;border-radius:99px;background:rgba(244,190,83,.15);border:1px solid rgba(244,190,83,.35);color:#ffdb91;padding:3px 9px;font-size:11px}
+.stats{max-width:1260px;margin:-35px auto 0;padding:0 24px;position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:17px 19px;box-shadow:var(--shadow)}
+.stat small{display:block;color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.06em;text-transform:uppercase}
+.stat strong{display:block;color:var(--navy);font-size:24px;line-height:1.35;margin-top:4px;letter-spacing:-.03em}
+.stat em{font-style:normal;color:var(--muted);font-size:11px}
+.layout{max-width:1260px;margin:34px auto 80px;padding:0 24px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:26px;align-items:start}
+.sidebar{position:sticky;top:84px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 14px;max-height:calc(100vh - 105px);overflow:auto}
+.side-title{font-size:11px;font-weight:800;letter-spacing:.1em;color:#8a97a8;text-transform:uppercase;padding:0 9px 10px}
+.toc-search{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 10px;font:13px inherit;margin-bottom:12px;outline:none}
+.toc-search:focus{border-color:#83a6ed;box-shadow:0 0 0 3px rgba(50,103,214,.1)}
+.toc-list{display:flex;flex-direction:column;gap:2px}
+.toc-list a{display:block;padding:6px 9px;border-radius:7px;color:#526176;font-size:12px;line-height:1.45}
+.toc-list a.toc-main{font-weight:700;color:#293b52;margin-top:4px}
+.toc-list a.toc-sub{padding-left:20px;color:#7a8797;font-size:11px}
+.toc-list a:hover{background:#f1f5fb;color:var(--blue);text-decoration:none}
+.content{min-width:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:38px 44px;box-shadow:var(--shadow)}
+.content h2{font-size:24px;line-height:1.35;letter-spacing:-.025em;color:var(--navy);margin:44px 0 18px;padding:0 0 13px;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+.content h2:first-child{margin-top:0}
+.content h3{font-size:17px;color:#263d59;margin:28px 0 12px;scroll-margin-top:90px}
+.content p{margin:10px 0 15px}
+.content ul,.content ol{padding-left:24px;margin:10px 0 20px}
+.content li{padding-left:4px;margin:6px 0}
+.content li::marker{color:#6487bd}
+.content strong{color:#263b56}
+.content hr{border:0;border-top:1px solid var(--line);margin:32px 0}
+.table-wrap{width:100%;overflow-x:auto;margin:14px 0 22px;border:1px solid var(--line);border-radius:10px}
+.data-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;line-height:1.55;margin:0;min-width:580px}
+.data-table th{background:#f1f5fa;color:#43536a;font-size:11px;text-transform:uppercase;letter-spacing:.055em;font-weight:800;white-space:nowrap}
+.data-table th,.data-table td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.data-table tr:last-child td{border-bottom:0}
+.data-table tbody tr:hover{background:#f8faff}
+.data-table td:first-child{font-weight:700;color:#345273;white-space:nowrap}
+.status-cell{font-weight:750;white-space:nowrap}
+.status-must,.status-required{color:#167451}
+.status-should{color:#3267d6}
+.status-proposed,.status-proposed-confirm{color:#a36d17}
+.status-to-confirm{color:#9a6412}
+blockquote{margin:18px 0;padding:14px 18px;border-left:3px solid #6d91d1;background:#f3f7fd;border-radius:0 9px 9px 0;color:#43546b}
+code{background:#f0f3f7;color:#294b78;border-radius:5px;padding:2px 5px;font-size:.9em}
+pre{overflow:auto;background:#17283d;color:#e5edf7;border-radius:10px;padding:18px}
+.footer{max-width:1260px;margin:-48px auto 35px;padding:0 24px;color:#8793a2;font-size:11px;display:flex;justify-content:space-between;gap:12px}
+@media(max-width:980px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.toc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.content{padding:30px}}
+@media(max-width:640px){.topbar{padding:0 15px}.top-actions .btn:not(.primary){display:none}.hero-wrap{padding:38px 18px 58px}.stats{padding:0 14px;grid-template-columns:repeat(2,1fr);gap:9px}.stat{padding:13px}.stat strong{font-size:21px}.layout{padding:0 14px;margin-top:22px}.content{padding:23px 18px}.content h2{font-size:21px}.toc-list{grid-template-columns:1fr}.footer{padding:0 16px;flex-direction:column}}
+@media print{body{background:white;font-size:11pt}.topbar,.sidebar,.top-actions,.stats{display:none!important}.hero-wrap{background:white;padding:0 0 20px;color:#111}.hero,.hero p,.meta-row,.meta-row b{color:#111}.hero h1{color:#111;font-size:25pt}.eyebrow{color:#333;border-color:#aaa;background:white}.status-pill{color:#333;border-color:#aaa;background:white}.layout{display:block;margin:0;padding:0;max-width:none}.content{border:0;box-shadow:none;padding:0}.content h2{break-after:avoid}.content h3{break-after:avoid}.table-wrap{overflow:visible;border:0}.data-table{min-width:0;font-size:9pt}.data-table tr{break-inside:avoid}.footer{margin:20px 0 0;padding:0}a{color:inherit;text-decoration:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">BK</div><span>บ้านคลองค้าไม้ <span style="color:#9aa6b5;font-weight:500">/ HR & Payroll</span></span></div>
+  <div class="top-actions">
+    <button class="btn" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
+  </div>
+</header>
+<section class="hero-wrap">
+  <div class="hero">
+    <span class="eyebrow">Software Requirement Specification</span>
+    <h1>Employee & Payroll<br>Management System</h1>
+    <p>เอกสารกำหนดความต้องการระบบบริหารพนักงานและเงินเดือน สำหรับบ้านคลองค้าไม้ ครอบคลุมการลงเวลา การลา การขาดงาน การเบิกล่วงหน้า และการจ่ายเงินเดือน 2 รอบต่อเดือน</p>
+    <div class="meta-row">
+      <span>▣ <b>Project:</b> บ้านคลองค้าไม้</span>
+      <span>◷ <b>Version:</b> 1.0 (Draft for Review)</span>
+      <span>▤ <b>Date:</b> 26 November 2026</span>
+      <span class="status-pill">Requirement Baseline – Pending Business Rule Confirmation</span>
+    </div>
+  </div>
+</section>
+<section class="stats">
+  <div class="stat"><small>Core modules</small><strong>08</strong><em>Employee to Payroll</em></div>
+  <div class="stat"><small>Payroll cycle</small><strong>2× / month</strong><em>จ่ายทุก 15 วัน</em></div>
+  <div class="stat"><small>Requirement groups</small><strong>14</strong><em>Business & system scope</em></div>
+  <div class="stat"><small>Document status</small><strong style="font-size:17px;margin-top:10px">Draft for Review</strong><em>รอยืนยัน Business Rules</em></div>
+</section>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-title">Document navigation</div>
+    <input class="toc-search" id="tocSearch" type="search" placeholder="ค้นหาหัวข้อ..." aria-label="ค้นหาหัวข้อ">
+    <nav class="toc-list" id="tocList"><a class="toc-main" href="#1-project-overview">1. Project Overview</a><a class="toc-sub" href="#11-business-context">1.1 Business Context</a><a class="toc-sub" href="#12-objectives">1.2 Objectives</a><a class="toc-main" href="#2-scope">2. Scope</a><a class="toc-sub" href="#21-in-scope">2.1 In Scope</a><a class="toc-sub" href="#22-out-of-scope-initial-release">2.2 Out of Scope (Initial Release)</a><a class="toc-main" href="#3-user-roles">3. User Roles</a><a class="toc-main" href="#4-functional-requirements">4. Functional Requirements</a><a class="toc-sub" href="#fr-emp-employee-management">FR-EMP: Employee Management</a><a class="toc-sub" href="#fr-att-attendance-work-record">FR-ATT: Attendance &amp; Work Record</a><a class="toc-sub" href="#fr-leave-leave-management">FR-LEAVE: Leave Management</a><a class="toc-sub" href="#fr-abs-absence-exception-management">FR-ABS: Absence &amp; Exception Management</a><a class="toc-sub" href="#fr-adv-salary-advance">FR-ADV: Salary Advance</a><a class="toc-sub" href="#fr-pay-semi-monthly-payroll">FR-PAY: Semi-monthly Payroll</a><a class="toc-sub" href="#fr-pay-calculation-proposed-structure">FR-PAY Calculation – Proposed Structure</a><a class="toc-sub" href="#fr-ps-payslip">FR-PS: Payslip</a><a class="toc-sub" href="#fr-rpt-reports-dashboard">FR-RPT: Reports &amp; Dashboard</a><a class="toc-main" href="#5-business-rules">5. Business Rules</a><a class="toc-main" href="#6-main-workflows">6. Main Workflows</a><a class="toc-sub" href="#61-leave-workflow">6.1 Leave Workflow</a><a class="toc-sub" href="#62-absence-workflow">6.2 Absence Workflow</a><a class="toc-sub" href="#63-salary-advance-workflow">6.3 Salary Advance Workflow</a><a class="toc-sub" href="#64-payroll-workflow">6.4 Payroll Workflow</a><a class="toc-main" href="#7-non-functional-requirements">7. Non-Functional Requirements</a><a class="toc-main" href="#8-proposed-screens-modules">8. Proposed Screens / Modules</a><a class="toc-main" href="#9-data-entities-initial">9. Data Entities (Initial)</a><a class="toc-main" href="#10-system-independence">10. System Independence</a><a class="toc-main" href="#11-acceptance-criteria">11. Acceptance Criteria</a><a class="toc-main" href="#12-open-questions-ต้องยืนยันก่อนเริ่มพัฒนา">12. Open Questions – ต้องยืนยันก่อนเริ่มพัฒนา</a><a class="toc-main" href="#13-recommended-implementation-baseline">13. Recommended Implementation Baseline</a><a class="toc-main" href="#14-sign-off">14. Sign-off</a></nav>
+  </aside>
+  <main class="content" id="documentContent">
+    <h2 id="1-project-overview">1. Project Overview</h2>
+<p>พัฒนาระบบบริหารพนักงานและเงินเดือนสำหรับ <strong>บ้านคลองค้าไม้</strong> รองรับการจัดเก็บข้อมูลพนักงาน การลงเวลา การลา การขาดงาน การเบิกเงินล่วงหน้า และการคำนวณเงินเดือน</p>
 <p>ระบบนี้เป็นระบบภายในสำหรับฝ่ายบริหาร/HR/Payroll และพนักงาน โดยออกแบบให้ใช้งานผ่าน Responsive Web</p>
-<h3>1.1 Business Context</h3>
-<p>ระบบนี้จัดทำขึ้นเพื่อใช้ภายในกิจการ **บ้านคลองค้าไม้** สำหรับบริหารข้อมูลพนักงาน การลงเวลาทำงาน การลา การขาดงาน การเบิกเงินล่วงหน้า และการจ่ายเงินเดือน โดยเป็นระบบอิสระ ไม่เชื่อมโยงกับระบบของธุรกิจอื่น</p>
+<h3 id="11-business-context">1.1 Business Context</h3>
+<p>ระบบนี้จัดทำขึ้นเพื่อใช้ภายในกิจการ <strong>บ้านคลองค้าไม้</strong> สำหรับบริหารข้อมูลพนักงาน การลงเวลาทำงาน การลา การขาดงาน การเบิกเงินล่วงหน้า และการจ่ายเงินเดือน โดยเป็นระบบอิสระ ไม่เชื่อมโยงกับระบบของธุรกิจอื่น</p>
 <p>ระบบรองรับพนักงานตามประเภทการจ้างและรูปแบบค่าตอบแทนที่กิจการกำหนด เช่น พนักงานรายเดือน พนักงานรายวัน หรือพนักงานประเภทอื่นที่เพิ่มภายหลังได้</p>
-<h3>1.2 Objectives</h3>
+<h3 id="12-objectives">1.2 Objectives</h3>
 <ol>
 <li>จัดเก็บข้อมูลพนักงานและสถานะการทำงานไว้ในศูนย์กลาง</li>
-<ol>
 <li>บันทึกและตรวจสอบการมาทำงาน การลา และการขาดงาน</li>
-<ol>
 <li>รองรับการจ่ายเงินเดือนทุก 15 วัน (2 รอบต่อเดือน)</li>
-<ol>
 <li>รองรับการยื่นคำขอเบิกเงินล่วงหน้าและหักคืนในรอบเงินเดือน</li>
-<ol>
 <li>คำนวณรายได้ รายการเพิ่ม รายการหัก และยอดสุทธิอย่างตรวจสอบย้อนหลังได้</li>
-<ol>
 <li>ลดการคำนวณด้วยมือและมีรายงานสำหรับผู้บริหาร</li>
-<hr>
-<h2>2. Scope</h2>
-<h3>2.1 In Scope</h3>
+</ol>
+<hr/>
+<h2 id="2-scope">2. Scope</h2>
+<h3 id="21-in-scope">2.1 In Scope</h3>
 <ul>
 <li>Employee Profile</li>
-<ul>
 <li>Employee Type และ Salary Structure</li>
-<ul>
 <li>Attendance / Time Record</li>
-<ul>
 <li>Leave Request และ Leave Balance</li>
-<ul>
 <li>Absence / Late / Early Leave Record</li>
-<ul>
 <li>Salary Advance Request, Approval และ Repayment</li>
-<ul>
 <li>Semi-monthly Payroll Processing</li>
-<ul>
 <li>Earnings / Allowances / Deductions</li>
-<ul>
 <li>Payslip</li>
-<ul>
 <li>Approval Workflow</li>
-<ul>
 <li>Payroll Reports และ Audit Log</li>
-<ul>
 <li>User Roles และ Permission</li>
-<ul>
 <li>Export รายงานเป็น CSV/Excel หรือ PDF (รูปแบบไฟล์ให้ยืนยันในขั้นออกแบบ)</li>
-<h3>2.2 Out of Scope (Initial Release)</h3>
+</ul>
+<h3 id="22-out-of-scope-initial-release">2.2 Out of Scope (Initial Release)</h3>
 <ul>
 <li>ระบบสรรหาและสมัครงาน (Recruitment)</li>
-<ul>
 <li>ระบบประเมินผลงานและ KPI เต็มรูปแบบ</li>
-<ul>
 <li>ระบบบัญชีแยกประเภท/ลงบัญชีอัตโนมัติ</li>
-<ul>
 <li>การโอนเงินเดือนผ่านธนาคารโดยตรง (รองรับบันทึกสถานะการจ่ายและช่องทางจ่ายก่อน)</li>
-<ul>
 <li>การคำนวณภาษีเงินได้บุคคลธรรมดาและประกันสังคมแบบยื่นรายการอัตโนมัติ จนกว่าจะยืนยันข้อกำหนด</li>
-<ul>
 <li>GPS/Geofencing หรือระบบตอกบัตรด้วยอุปกรณ์เฉพาะ</li>
-<ul>
 <li>การคำนวณค่าคอมมิชชันจากผลงานแบบอัตโนมัติใน Release แรก (สามารถบันทึกเป็นรายการเพิ่มด้วยมือได้ หากอนุมัติ)</li>
-<hr>
-<h2>3. User Roles</h2>
-<table><thead><tr><th>Role</th><th>Description</th><th>Key Permissions</th></tr></thead><tbody>
-<tr><td>System Admin</td><td>ดูแลระบบและผู้ใช้งาน</td><td>ตั้งค่าระบบ, จัดการสิทธิ์</td></tr>
-<tr><td>Owner / Management</td><td>ผู้บริหาร</td><td>ดู Dashboard, อนุมัติรายการตามสิทธิ์, ดูรายงาน</td></tr>
-<tr><td>HR</td><td>ดูแลข้อมูลพนักงานและเวลา</td><td>จัดการพนักงาน, ตรวจสอบเวลา, จัดการวันลา</td></tr>
-<tr><td>Payroll Officer</td><td>จัดทำเงินเดือน</td><td>ตรวจสอบข้อมูล, คำนวณ Payroll, จัดทำ Payslip</td></tr>
-<tr><td>Approver</td><td>ผู้อนุมัติ</td><td>อนุมัติ/ปฏิเสธลาและเบิกล่วงหน้า</td></tr>
-<tr><td>Employee</td><td>พนักงาน</td><td>ดูข้อมูลตนเอง, ลงเวลา/ยื่นลา/ขอเบิกล่วงหน้า, ดู Payslip</td></tr>
-</tbody></table>
+</ul>
+<hr/>
+<h2 id="3-user-roles">3. User Roles</h2>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Description</th>
+<th>Key Permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System Admin</td>
+<td>ดูแลระบบและผู้ใช้งาน</td>
+<td>ตั้งค่าระบบ, จัดการสิทธิ์</td>
+</tr>
+<tr>
+<td>Owner / Management</td>
+<td>ผู้บริหาร</td>
+<td>ดู Dashboard, อนุมัติรายการตามสิทธิ์, ดูรายงาน</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>ดูแลข้อมูลพนักงานและเวลา</td>
+<td>จัดการพนักงาน, ตรวจสอบเวลา, จัดการวันลา</td>
+</tr>
+<tr>
+<td>Payroll Officer</td>
+<td>จัดทำเงินเดือน</td>
+<td>ตรวจสอบข้อมูล, คำนวณ Payroll, จัดทำ Payslip</td>
+</tr>
+<tr>
+<td>Approver</td>
+<td>ผู้อนุมัติ</td>
+<td>อนุมัติ/ปฏิเสธลาและเบิกล่วงหน้า</td>
+</tr>
+<tr>
+<td>Employee</td>
+<td>พนักงาน</td>
+<td>ดูข้อมูลตนเอง, ลงเวลา/ยื่นลา/ขอเบิกล่วงหน้า, ดู Payslip</td>
+</tr>
+</tbody>
+</table></div>
 <p>การกำหนดว่า Owner, HR หรือ Payroll Officer เป็นผู้อนุมัติรายการใด ต้องยืนยันก่อนพัฒนา</p>
-<hr>
-<h2>4. Functional Requirements</h2>
-<h3>FR-EMP: Employee Management</h3>
-<table><thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead><tbody>
-<tr><td>FR-EMP-001</td><td>เพิ่ม/แก้ไข/ดู/ปิดใช้งานข้อมูลพนักงาน</td><td>Must</td></tr>
-<tr><td>FR-EMP-002</td><td>จัดเก็บรหัสพนักงาน ชื่อ-นามสกุล เบอร์โทร อีเมล ที่อยู่ และข้อมูลติดต่อฉุกเฉิน</td><td>Must</td></tr>
-<tr><td>FR-EMP-003</td><td>จัดเก็บตำแหน่ง แผนก ประเภทพนักงาน วันที่เริ่มงาน และสถานะการจ้าง</td><td>Must</td></tr>
-<tr><td>FR-EMP-004</td><td>จัดเก็บข้อมูลค่าจ้าง เช่น เงินเดือนรายเดือน ค่าจ้างรายวัน หรือค่าจ้างรูปแบบอื่น</td><td>Must</td></tr>
-<tr><td>FR-EMP-005</td><td>จัดเก็บข้อมูลบัญชีธนาคาร/ช่องทางรับเงิน โดยจำกัดสิทธิ์การเข้าถึง</td><td>Should</td></tr>
-<tr><td>FR-EMP-006</td><td>เก็บประวัติการเปลี่ยนแปลงเงินเดือนและเงื่อนไขค่าจ้าง</td><td>Should</td></tr>
-<tr><td>FR-EMP-007</td><td>เชื่อมโยงพนักงานกับ Employee Profile ในกิจการบ้านคลองค้าไม้</td><td>Should</td></tr>
-</tbody></table>
-<p>**ข้อมูลสำคัญ:** รองรับพนักงานหลายรูปแบบ เช่น พนักงานประจำรายเดือน พนักงานรายวัน และพนักงานที่มีค่าตอบแทนเพิ่มเติม ทั้งนี้รูปแบบที่ใช้งานจริงต้องยืนยัน</p>
-<h3>FR-ATT: Attendance &amp; Work Record</h3>
-<table><thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead><tbody>
-<tr><td>FR-ATT-001</td><td>บันทึกเวลาเข้างานและออกงานของพนักงาน</td><td>Must</td></tr>
-<tr><td>FR-ATT-002</td><td>รองรับ HR เพิ่ม/แก้ไขรายการเวลา พร้อมระบุเหตุผล</td><td>Must</td></tr>
-<tr><td>FR-ATT-003</td><td>แสดงสถานะ Present, Absent, Late, Leave, Holiday และ Rest Day</td><td>Must</td></tr>
-<tr><td>FR-ATT-004</td><td>ตรวจสอบรายการลงเวลาที่ขาดหรือผิดปกติ</td><td>Must</td></tr>
-<tr><td>FR-ATT-005</td><td>ดูประวัติการมาทำงานรายวัน/รายเดือน</td><td>Must</td></tr>
-<tr><td>FR-ATT-006</td><td>รองรับการบันทึกเวลาทำงานหรือกะงานที่ไม่เป็นเวลาเดียวกัน</td><td>Should</td></tr>
-<tr><td>FR-ATT-007</td><td>รองรับการกำหนดตารางงานหรือกะทำงานเพื่อใช้ประกอบการตรวจสอบวันทำงาน</td><td>Should</td></tr>
-</tbody></table>
-<p>**กติกาเบื้องต้น:** การมีงานไม่ควรถูกตีความว่าเป็นการลงเวลาทำงานโดยอัตโนมัติ จนกว่าจะกำหนดกติกา Attendance Integration ชัดเจน</p>
-<h3>FR-LEAVE: Leave Management</h3>
-<table><thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead><tbody>
-<tr><td>FR-LEAVE-001</td><td>พนักงานยื่นคำขอลาผ่านระบบ</td><td>Must</td></tr>
-<tr><td>FR-LEAVE-002</td><td>ระบุประเภทการลา วันที่ลา ช่วงเวลา และเหตุผล</td><td>Must</td></tr>
-<tr><td>FR-LEAVE-003</td><td>แนบเอกสารประกอบได้ เช่น ใบรับรองแพทย์ (ถ้ากำหนด)</td><td>Should</td></tr>
-<tr><td>FR-LEAVE-004</td><td>ผู้มีสิทธิ์อนุมัติ/ปฏิเสธคำขอลา พร้อมหมายเหตุ</td><td>Must</td></tr>
-<tr><td>FR-LEAVE-005</td><td>แสดงสถานะ Pending, Approved, Rejected และ Cancelled</td><td>Must</td></tr>
-<tr><td>FR-LEAVE-006</td><td>คำนวณวันลาคงเหลือตามประเภทการลา</td><td>Should</td></tr>
-<tr><td>FR-LEAVE-007</td><td>ส่งผลการลาที่อนุมัติแล้วไปยัง Attendance และ Payroll</td><td>Must</td></tr>
-<tr><td>FR-LEAVE-008</td><td>HR บันทึกการลาแทนพนักงานได้ พร้อม Audit Log</td><td>Must</td></tr>
-</tbody></table>
+<hr/>
+<h2 id="4-functional-requirements">4. Functional Requirements</h2>
+<h3 id="fr-emp-employee-management">FR-EMP: Employee Management</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-EMP-001</td>
+<td>เพิ่ม/แก้ไข/ดู/ปิดใช้งานข้อมูลพนักงาน</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-EMP-002</td>
+<td>จัดเก็บรหัสพนักงาน ชื่อ-นามสกุล เบอร์โทร อีเมล ที่อยู่ และข้อมูลติดต่อฉุกเฉิน</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-EMP-003</td>
+<td>จัดเก็บตำแหน่ง แผนก ประเภทพนักงาน วันที่เริ่มงาน และสถานะการจ้าง</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-EMP-004</td>
+<td>จัดเก็บข้อมูลค่าจ้าง เช่น เงินเดือนรายเดือน ค่าจ้างรายวัน หรือค่าจ้างรูปแบบอื่น</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-EMP-005</td>
+<td>จัดเก็บข้อมูลบัญชีธนาคาร/ช่องทางรับเงิน โดยจำกัดสิทธิ์การเข้าถึง</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+<tr>
+<td>FR-EMP-006</td>
+<td>เก็บประวัติการเปลี่ยนแปลงเงินเดือนและเงื่อนไขค่าจ้าง</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+<tr>
+<td>FR-EMP-007</td>
+<td>เชื่อมโยงพนักงานกับ Employee Profile ในกิจการบ้านคลองค้าไม้</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ข้อมูลสำคัญ:</strong> รองรับพนักงานหลายรูปแบบ เช่น พนักงานประจำรายเดือน พนักงานรายวัน และพนักงานที่มีค่าตอบแทนเพิ่มเติม ทั้งนี้รูปแบบที่ใช้งานจริงต้องยืนยัน</p>
+<h3 id="fr-att-attendance-work-record">FR-ATT: Attendance &amp; Work Record</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-ATT-001</td>
+<td>บันทึกเวลาเข้างานและออกงานของพนักงาน</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ATT-002</td>
+<td>รองรับ HR เพิ่ม/แก้ไขรายการเวลา พร้อมระบุเหตุผล</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ATT-003</td>
+<td>แสดงสถานะ Present, Absent, Late, Leave, Holiday และ Rest Day</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ATT-004</td>
+<td>ตรวจสอบรายการลงเวลาที่ขาดหรือผิดปกติ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ATT-005</td>
+<td>ดูประวัติการมาทำงานรายวัน/รายเดือน</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ATT-006</td>
+<td>รองรับการบันทึกเวลาทำงานหรือกะงานที่ไม่เป็นเวลาเดียวกัน</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+<tr>
+<td>FR-ATT-007</td>
+<td>รองรับการกำหนดตารางงานหรือกะทำงานเพื่อใช้ประกอบการตรวจสอบวันทำงาน</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>กติกาเบื้องต้น:</strong> การมีงานไม่ควรถูกตีความว่าเป็นการลงเวลาทำงานโดยอัตโนมัติ จนกว่าจะกำหนดกติกา Attendance Integration ชัดเจน</p>
+<h3 id="fr-leave-leave-management">FR-LEAVE: Leave Management</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-LEAVE-001</td>
+<td>พนักงานยื่นคำขอลาผ่านระบบ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-LEAVE-002</td>
+<td>ระบุประเภทการลา วันที่ลา ช่วงเวลา และเหตุผล</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-LEAVE-003</td>
+<td>แนบเอกสารประกอบได้ เช่น ใบรับรองแพทย์ (ถ้ากำหนด)</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+<tr>
+<td>FR-LEAVE-004</td>
+<td>ผู้มีสิทธิ์อนุมัติ/ปฏิเสธคำขอลา พร้อมหมายเหตุ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-LEAVE-005</td>
+<td>แสดงสถานะ Pending, Approved, Rejected และ Cancelled</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-LEAVE-006</td>
+<td>คำนวณวันลาคงเหลือตามประเภทการลา</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+<tr>
+<td>FR-LEAVE-007</td>
+<td>ส่งผลการลาที่อนุมัติแล้วไปยัง Attendance และ Payroll</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-LEAVE-008</td>
+<td>HR บันทึกการลาแทนพนักงานได้ พร้อม Audit Log</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+</tbody>
+</table></div>
 <p>ประเภทการลาที่เสนอให้รองรับเป็นค่า Configurable ได้แก่ ลาป่วย ลากิจ ลาพักร้อน ลาคลอด/ลาอื่นตามนโยบายบริษัท และลาไม่รับค่าจ้าง (Unpaid Leave) ทั้งนี้สิทธิและจำนวนวันต้องกำหนดตามนโยบายบริษัทและกฎหมายที่เกี่ยวข้อง</p>
-<h3>FR-ABS: Absence &amp; Exception Management</h3>
-<table><thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead><tbody>
-<tr><td>FR-ABS-001</td><td>HR บันทึกการขาดงานโดยไม่แจ้งล่วงหน้าได้</td><td>Must</td></tr>
-<tr><td>FR-ABS-002</td><td>บันทึกมาสาย กลับก่อน และไม่ลงเวลาได้</td><td>Must</td></tr>
-<tr><td>FR-ABS-003</td><td>ระบุวันที่ จำนวนชั่วโมง/วัน เหตุผล และผู้บันทึก</td><td>Must</td></tr>
-<tr><td>FR-ABS-004</td><td>พนักงานสามารถชี้แจงหรือส่งคำขอแก้ไขรายการได้</td><td>Should</td></tr>
-<tr><td>FR-ABS-005</td><td>ส่งรายการที่ยืนยันแล้วไปคำนวณ Payroll ตามกติกาที่กำหนด</td><td>Must</td></tr>
-<tr><td>FR-ABS-006</td><td>แยกสถานะรอตรวจสอบ ยืนยันแล้ว และยกเลิก</td><td>Must</td></tr>
-</tbody></table>
+<h3 id="fr-abs-absence-exception-management">FR-ABS: Absence &amp; Exception Management</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-ABS-001</td>
+<td>HR บันทึกการขาดงานโดยไม่แจ้งล่วงหน้าได้</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ABS-002</td>
+<td>บันทึกมาสาย กลับก่อน และไม่ลงเวลาได้</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ABS-003</td>
+<td>ระบุวันที่ จำนวนชั่วโมง/วัน เหตุผล และผู้บันทึก</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ABS-004</td>
+<td>พนักงานสามารถชี้แจงหรือส่งคำขอแก้ไขรายการได้</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+<tr>
+<td>FR-ABS-005</td>
+<td>ส่งรายการที่ยืนยันแล้วไปคำนวณ Payroll ตามกติกาที่กำหนด</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ABS-006</td>
+<td>แยกสถานะรอตรวจสอบ ยืนยันแล้ว และยกเลิก</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+</tbody>
+</table></div>
 <p>ระบบต้องไม่หักเงินจากรายการขาดงานที่ยังอยู่ระหว่างตรวจสอบโดยอัตโนมัติ</p>
-<h3>FR-ADV: Salary Advance</h3>
-<table><thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead><tbody>
-<tr><td>FR-ADV-001</td><td>พนักงานยื่นคำขอเบิกเงินล่วงหน้า</td><td>Must</td></tr>
-<tr><td>FR-ADV-002</td><td>ระบุจำนวนเงิน วันที่ต้องการรับ และเหตุผล</td><td>Must</td></tr>
-<tr><td>FR-ADV-003</td><td>ตรวจสอบวงเงิน/สิทธิ์ตามนโยบายบริษัท</td><td>Must</td></tr>
-<tr><td>FR-ADV-004</td><td>ผู้มีสิทธิ์อนุมัติหรือปฏิเสธคำขอ</td><td>Must</td></tr>
-<tr><td>FR-ADV-005</td><td>บันทึกยอดที่อนุมัติ วันที่จ่าย และช่องทางจ่าย</td><td>Must</td></tr>
-<tr><td>FR-ADV-006</td><td>กำหนดแผนหักคืน เช่น หักเต็มจำนวนหรือแบ่งหักหลายงวด</td><td>Must</td></tr>
-<tr><td>FR-ADV-007</td><td>แสดงยอดคงเหลือและประวัติการหักคืน</td><td>Must</td></tr>
-<tr><td>FR-ADV-008</td><td>ส่งยอดหักคืนไปยัง Payroll รอบที่กำหนด</td><td>Must</td></tr>
-<tr><td>FR-ADV-009</td><td>ป้องกันการหักยอดเกินยอดคงเหลือ</td><td>Must</td></tr>
-</tbody></table>
-<p>**กติกาที่ต้องกำหนด:** วงเงินสูงสุดต่อครั้ง/ต่อเดือน, อายุงานขั้นต่ำ, จำนวนครั้งที่ขอได้, ผู้อนุมัติ, การหักคืนเมื่อพนักงานลาออก และการจัดการกรณีเงินเดือนสุทธิไม่เพียงพอ</p>
-<h3>FR-PAY: Semi-monthly Payroll</h3>
-<table><thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead><tbody>
-<tr><td>FR-PAY-001</td><td>สร้างรอบเงินเดือน 2 รอบต่อเดือน</td><td>Must</td></tr>
-<tr><td>FR-PAY-002</td><td>กำหนดวันเริ่มต้น/สิ้นสุดรอบ วันตัดข้อมูล และวันจ่ายเงินได้</td><td>Must</td></tr>
-<tr><td>FR-PAY-003</td><td>ดึงข้อมูลพนักงาน สถานะการจ้าง Attendance, Leave, Absence และ Advance</td><td>Must</td></tr>
-<tr><td>FR-PAY-004</td><td>คำนวณรายได้พื้นฐานตามรูปแบบค่าจ้าง</td><td>Must</td></tr>
-<tr><td>FR-PAY-005</td><td>คำนวณรายการเพิ่ม เช่น OT, เบี้ยเลี้ยง, โบนัส หรือค่าตอบแทนพิเศษ</td><td>Should</td></tr>
-<tr><td>FR-PAY-006</td><td>คำนวณรายการหัก เช่น ขาดงาน ลาไม่รับค่าจ้าง และหักคืนเงินเบิกล่วงหน้า</td><td>Must</td></tr>
-<tr><td>FR-PAY-007</td><td>Payroll Officer ปรับรายการเพิ่ม/หักด้วยมือ พร้อมเหตุผลและผู้แก้ไข</td><td>Must</td></tr>
-<tr><td>FR-PAY-008</td><td>แสดง Payroll Preview ก่อนยืนยันรอบ</td><td>Must</td></tr>
-<tr><td>FR-PAY-009</td><td>ตรวจสอบและอนุมัติ Payroll ก่อนปิดรอบ</td><td>Must</td></tr>
-<tr><td>FR-PAY-010</td><td>ปิดรอบเงินเดือนและล็อกข้อมูลไม่ให้แก้ไขโดยผู้ใช้ทั่วไป</td><td>Must</td></tr>
-<tr><td>FR-PAY-011</td><td>บันทึกสถานะการจ่ายเงิน เช่น Draft, Pending Approval, Approved, Paid และ Reopened</td><td>Must</td></tr>
-<tr><td>FR-PAY-012</td><td>สร้าง Payslip รายบุคคล</td><td>Must</td></tr>
-<tr><td>FR-PAY-013</td><td>รองรับการเปิดรอบที่ปิดแล้วอีกครั้งโดยผู้มีสิทธิ์ พร้อมเหตุผลและ Audit Log</td><td>Should</td></tr>
-</tbody></table>
-<h3>FR-PAY Calculation – Proposed Structure</h3>
+<h3 id="fr-adv-salary-advance">FR-ADV: Salary Advance</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-ADV-001</td>
+<td>พนักงานยื่นคำขอเบิกเงินล่วงหน้า</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-002</td>
+<td>ระบุจำนวนเงิน วันที่ต้องการรับ และเหตุผล</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-003</td>
+<td>ตรวจสอบวงเงิน/สิทธิ์ตามนโยบายบริษัท</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-004</td>
+<td>ผู้มีสิทธิ์อนุมัติหรือปฏิเสธคำขอ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-005</td>
+<td>บันทึกยอดที่อนุมัติ วันที่จ่าย และช่องทางจ่าย</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-006</td>
+<td>กำหนดแผนหักคืน เช่น หักเต็มจำนวนหรือแบ่งหักหลายงวด</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-007</td>
+<td>แสดงยอดคงเหลือและประวัติการหักคืน</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-008</td>
+<td>ส่งยอดหักคืนไปยัง Payroll รอบที่กำหนด</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-ADV-009</td>
+<td>ป้องกันการหักยอดเกินยอดคงเหลือ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>กติกาที่ต้องกำหนด:</strong> วงเงินสูงสุดต่อครั้ง/ต่อเดือน, อายุงานขั้นต่ำ, จำนวนครั้งที่ขอได้, ผู้อนุมัติ, การหักคืนเมื่อพนักงานลาออก และการจัดการกรณีเงินเดือนสุทธิไม่เพียงพอ</p>
+<h3 id="fr-pay-semi-monthly-payroll">FR-PAY: Semi-monthly Payroll</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-PAY-001</td>
+<td>สร้างรอบเงินเดือน 2 รอบต่อเดือน</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-002</td>
+<td>กำหนดวันเริ่มต้น/สิ้นสุดรอบ วันตัดข้อมูล และวันจ่ายเงินได้</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-003</td>
+<td>ดึงข้อมูลพนักงาน สถานะการจ้าง Attendance, Leave, Absence และ Advance</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-004</td>
+<td>คำนวณรายได้พื้นฐานตามรูปแบบค่าจ้าง</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-005</td>
+<td>คำนวณรายการเพิ่ม เช่น OT, เบี้ยเลี้ยง, โบนัส หรือค่าตอบแทนพิเศษ</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+<tr>
+<td>FR-PAY-006</td>
+<td>คำนวณรายการหัก เช่น ขาดงาน ลาไม่รับค่าจ้าง และหักคืนเงินเบิกล่วงหน้า</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-007</td>
+<td>Payroll Officer ปรับรายการเพิ่ม/หักด้วยมือ พร้อมเหตุผลและผู้แก้ไข</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-008</td>
+<td>แสดง Payroll Preview ก่อนยืนยันรอบ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-009</td>
+<td>ตรวจสอบและอนุมัติ Payroll ก่อนปิดรอบ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-010</td>
+<td>ปิดรอบเงินเดือนและล็อกข้อมูลไม่ให้แก้ไขโดยผู้ใช้ทั่วไป</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-011</td>
+<td>บันทึกสถานะการจ่ายเงิน เช่น Draft, Pending Approval, Approved, Paid และ Reopened</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-012</td>
+<td>สร้าง Payslip รายบุคคล</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PAY-013</td>
+<td>รองรับการเปิดรอบที่ปิดแล้วอีกครั้งโดยผู้มีสิทธิ์ พร้อมเหตุผลและ Audit Log</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="fr-pay-calculation-proposed-structure">FR-PAY Calculation – Proposed Structure</h3>
 <p>สูตรแสดงผลเบื้องต้น:</p>
-<p>**ยอดสุทธิ = รายได้พื้นฐาน + รายได้เพิ่มเติม – รายการหัก**</p>
+<p><strong>ยอดสุทธิ = รายได้พื้นฐาน + รายได้เพิ่มเติม – รายการหัก</strong></p>
 <p>ตัวอย่างองค์ประกอบ:</p>
 <ul>
 <li>รายได้พื้นฐาน: เงินเดือนตามสัดส่วนรอบ หรือค่าจ้างรายวัน × วันทำงานที่จ่าย</li>
-<ul>
 <li>รายได้เพิ่มเติม: OT, เบี้ยเลี้ยง, โบนัส, ค่าตอบแทนพิเศษ (ถ้ามีนโยบาย)</li>
-<ul>
 <li>รายการหัก: ขาดงาน, Unpaid Leave, เงินเบิกล่วงหน้าที่ถึงกำหนดหัก, ภาษี/ประกันสังคม/รายการอื่นตามนโยบายและกฎหมาย</li>
-<p>**ข้อควรระวัง:** สูตร Proration, จำนวนวันฐานหารเงินเดือน, การปัดเศษ, OT, วันหยุด และการหักตามกฎหมายยังไม่ถือเป็นข้อสรุป ต้องผ่านการยืนยันจากผู้ว่าจ้าง/ฝ่ายบัญชีหรือผู้ดูแลกฎหมายแรงงานก่อนนำไปใช้จริง</p>
-<h3>FR-PS: Payslip</h3>
-<table><thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead><tbody>
-<tr><td>FR-PS-001</td><td>แสดงข้อมูลพนักงานและรอบการจ่าย</td><td>Must</td></tr>
-<tr><td>FR-PS-002</td><td>แสดงรายได้แยกตามประเภท</td><td>Must</td></tr>
-<tr><td>FR-PS-003</td><td>แสดงรายการหักแยกตามประเภท</td><td>Must</td></tr>
-<tr><td>FR-PS-004</td><td>แสดงยอดรวมรายได้ ยอดรวมหัก และยอดสุทธิ</td><td>Must</td></tr>
-<tr><td>FR-PS-005</td><td>พนักงานดู Payslip ของตนเองย้อนหลังได้</td><td>Must</td></tr>
-<tr><td>FR-PS-006</td><td>ดาวน์โหลดหรือพิมพ์ Payslip ได้</td><td>Should</td></tr>
-</tbody></table>
-<h3>FR-RPT: Reports &amp; Dashboard</h3>
+</ul>
+<p><strong>ข้อควรระวัง:</strong> สูตร Proration, จำนวนวันฐานหารเงินเดือน, การปัดเศษ, OT, วันหยุด และการหักตามกฎหมายยังไม่ถือเป็นข้อสรุป ต้องผ่านการยืนยันจากผู้ว่าจ้าง/ฝ่ายบัญชีหรือผู้ดูแลกฎหมายแรงงานก่อนนำไปใช้จริง</p>
+<h3 id="fr-ps-payslip">FR-PS: Payslip</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-PS-001</td>
+<td>แสดงข้อมูลพนักงานและรอบการจ่าย</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PS-002</td>
+<td>แสดงรายได้แยกตามประเภท</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PS-003</td>
+<td>แสดงรายการหักแยกตามประเภท</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PS-004</td>
+<td>แสดงยอดรวมรายได้ ยอดรวมหัก และยอดสุทธิ</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PS-005</td>
+<td>พนักงานดู Payslip ของตนเองย้อนหลังได้</td>
+<td class="status-cell status-must">Must</td>
+</tr>
+<tr>
+<td>FR-PS-006</td>
+<td>ดาวน์โหลดหรือพิมพ์ Payslip ได้</td>
+<td class="status-cell status-should">Should</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="fr-rpt-reports-dashboard">FR-RPT: Reports &amp; Dashboard</h3>
 <ul>
 <li>จำนวนพนักงานทั้งหมด แยกตามสถานะและประเภท</li>
-<ul>
 <li>สรุปการมาทำงาน ขาดงาน มาสาย และลา</li>
-<ul>
 <li>สรุปคำขอลาที่รออนุมัติ</li>
-<ul>
 <li>สรุปคำขอเบิกล่วงหน้าและยอดคงค้าง</li>
-<ul>
 <li>Payroll Summary แยกตามรอบและพนักงาน</li>
-<ul>
 <li>รายงานรายการเพิ่ม/หัก</li>
-<ul>
 <li>รายงานประวัติการจ่ายเงินเดือน</li>
-<ul>
 <li>Export ข้อมูลตามสิทธิ์ผู้ใช้งาน</li>
-<hr>
-<h2>5. Business Rules</h2>
-<table><thead><tr><th>Rule ID</th><th>Business Rule</th><th>Status</th></tr></thead><tbody>
-<tr><td>BR-001</td><td>จ่ายเงินเดือนทุก 15 วัน จำนวน 2 รอบต่อเดือน</td><td>Proposed</td></tr>
-<tr><td>BR-002</td><td>รอบที่ 1 เสนอเป็นวันที่ 1–15 และรอบที่ 2 วันที่ 16–วันสุดท้ายของเดือน</td><td>Proposed – Confirm</td></tr>
-<tr><td>BR-003</td><td>วันตัดข้อมูลและวันจ่ายเงินจริงกำหนดแยกจากช่วงรอบเงินเดือน</td><td>To Confirm</td></tr>
-<tr><td>BR-004</td><td>คำขอลาต้องได้รับอนุมัติก่อนจึงเปลี่ยนเป็นวันลาที่อนุมัติ</td><td>Proposed</td></tr>
-<tr><td>BR-005</td><td>การขาดงานที่ยังไม่ยืนยันจะไม่ถูกนำไปหักเงิน</td><td>Proposed</td></tr>
-<tr><td>BR-006</td><td>เงินเบิกล่วงหน้าจะหักได้เมื่อมีสถานะอนุมัติและจ่ายเงินจริงแล้ว</td><td>Proposed</td></tr>
-<tr><td>BR-007</td><td>ยอดหักคืนต้องไม่เกินยอดเงินเบิกล่วงหน้าคงเหลือ</td><td>Required</td></tr>
-<tr><td>BR-008</td><td>Payroll ที่อนุมัติ/ปิดรอบแล้วต้องแก้ไขผ่านกระบวนการ Reopen เท่านั้น</td><td>Proposed</td></tr>
-<tr><td>BR-009</td><td>การแก้ไขข้อมูลย้อนหลังต้องเก็บผู้แก้ไข เวลา และเหตุผล</td><td>Required</td></tr>
-</tbody></table>
-<hr>
-<h2>6. Main Workflows</h2>
-<h3>6.1 Leave Workflow</h3>
+</ul>
+<hr/>
+<h2 id="5-business-rules">5. Business Rules</h2>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Rule ID</th>
+<th>Business Rule</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BR-001</td>
+<td>จ่ายเงินเดือนทุก 15 วัน จำนวน 2 รอบต่อเดือน</td>
+<td class="status-cell status-proposed">Proposed</td>
+</tr>
+<tr>
+<td>BR-002</td>
+<td>รอบที่ 1 เสนอเป็นวันที่ 1–15 และรอบที่ 2 วันที่ 16–วันสุดท้ายของเดือน</td>
+<td class="status-cell status-proposed-confirm">Proposed – Confirm</td>
+</tr>
+<tr>
+<td>BR-003</td>
+<td>วันตัดข้อมูลและวันจ่ายเงินจริงกำหนดแยกจากช่วงรอบเงินเดือน</td>
+<td class="status-cell status-to-confirm">To Confirm</td>
+</tr>
+<tr>
+<td>BR-004</td>
+<td>คำขอลาต้องได้รับอนุมัติก่อนจึงเปลี่ยนเป็นวันลาที่อนุมัติ</td>
+<td class="status-cell status-proposed">Proposed</td>
+</tr>
+<tr>
+<td>BR-005</td>
+<td>การขาดงานที่ยังไม่ยืนยันจะไม่ถูกนำไปหักเงิน</td>
+<td class="status-cell status-proposed">Proposed</td>
+</tr>
+<tr>
+<td>BR-006</td>
+<td>เงินเบิกล่วงหน้าจะหักได้เมื่อมีสถานะอนุมัติและจ่ายเงินจริงแล้ว</td>
+<td class="status-cell status-proposed">Proposed</td>
+</tr>
+<tr>
+<td>BR-007</td>
+<td>ยอดหักคืนต้องไม่เกินยอดเงินเบิกล่วงหน้าคงเหลือ</td>
+<td class="status-cell status-required">Required</td>
+</tr>
+<tr>
+<td>BR-008</td>
+<td>Payroll ที่อนุมัติ/ปิดรอบแล้วต้องแก้ไขผ่านกระบวนการ Reopen เท่านั้น</td>
+<td class="status-cell status-proposed">Proposed</td>
+</tr>
+<tr>
+<td>BR-009</td>
+<td>การแก้ไขข้อมูลย้อนหลังต้องเก็บผู้แก้ไข เวลา และเหตุผล</td>
+<td class="status-cell status-required">Required</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="6-main-workflows">6. Main Workflows</h2>
+<h3 id="61-leave-workflow">6.1 Leave Workflow</h3>
 <ol>
 <li>พนักงานเข้าสู่ระบบและยื่นคำขอลา</li>
-<ol>
 <li>ระบบตรวจสอบข้อมูลที่จำเป็นและยอดวันลาคงเหลือ (หากเปิดใช้)</li>
-<ol>
 <li>ส่งคำขอไปยังผู้อนุมัติ</li>
-<ol>
 <li>ผู้อนุมัติอนุมัติหรือปฏิเสธ</li>
-<ol>
 <li>เมื่ออนุมัติ ระบบบันทึก Leave และปรับ Attendance</li>
-<ol>
 <li>Payroll ดึงข้อมูลลาไปคำนวณตามประเภทการลา</li>
-<h3>6.2 Absence Workflow</h3>
+</ol>
+<h3 id="62-absence-workflow">6.2 Absence Workflow</h3>
 <ol>
 <li>HR ตรวจพบหรือได้รับแจ้งการขาดงาน</li>
-<ol>
 <li>HR บันทึกรายการขาดงานเป็น Pending Review</li>
-<ol>
 <li>พนักงานชี้แจงหรือส่งหลักฐาน (ถ้ามี)</li>
-<ol>
 <li>HR/ผู้มีสิทธิ์ยืนยันหรือยกเลิกรายการ</li>
-<ol>
 <li>รายการที่ยืนยันแล้วจึงถูกส่งเข้า Payroll</li>
-<h3>6.3 Salary Advance Workflow</h3>
+</ol>
+<h3 id="63-salary-advance-workflow">6.3 Salary Advance Workflow</h3>
 <ol>
 <li>พนักงานยื่นคำขอเบิกล่วงหน้า</li>
-<ol>
 <li>ระบบตรวจสอบเงื่อนไขและวงเงิน</li>
-<ol>
 <li>ผู้อนุมัติอนุมัติ/ปฏิเสธ</li>
-<ol>
 <li>Payroll/Finance บันทึกการจ่ายเงินจริง</li>
-<ol>
 <li>ระบบสร้างยอดคงค้างและตารางหักคืน</li>
-<ol>
 <li>Payroll นำยอดที่ถึงกำหนดไปหักในรอบเงินเดือน</li>
-<ol>
 <li>ระบบปรับยอดคงเหลือและแสดงประวัติ</li>
-<h3>6.4 Payroll Workflow</h3>
+</ol>
+<h3 id="64-payroll-workflow">6.4 Payroll Workflow</h3>
 <ol>
 <li>Payroll Officer เปิดรอบเงินเดือน</li>
-<ol>
 <li>ระบบดึงข้อมูลพนักงานและรายการที่เกี่ยวข้อง</li>
-<ol>
 <li>ระบบคำนวณรายได้และรายการหักตามกติกา</li>
-<ol>
 <li>Payroll Officer ตรวจสอบข้อผิดปกติและ Preview</li>
-<ol>
 <li>ส่งให้ผู้มีอำนาจอนุมัติ</li>
-<ol>
 <li>อนุมัติและปิดรอบ</li>
-<ol>
 <li>บันทึกการจ่ายเงินและสร้าง Payslip</li>
-<ol>
 <li>พนักงานเข้าดู Payslip ของตนเอง</li>
-<hr>
-<h2>7. Non-Functional Requirements</h2>
-<table><thead><tr><th>ID</th><th>Category</th><th>Requirement</th></tr></thead><tbody>
-<tr><td>NFR-001</td><td>Security</td><td>ใช้ Authentication และ Role-Based Access Control</td></tr>
-<tr><td>NFR-002</td><td>Data Privacy</td><td>จำกัดการเห็นเงินเดือน บัญชีธนาคาร และข้อมูลส่วนบุคคลตามหน้าที่</td></tr>
-<tr><td>NFR-003</td><td>Audit</td><td>เก็บประวัติการสร้าง/แก้ไข/อนุมัติ/ยกเลิกรายการสำคัญ</td></tr>
-<tr><td>NFR-004</td><td>Accuracy</td><td>การคำนวณเงินเดือนต้องตรวจสอบย้อนกลับได้และมีรายละเอียดองค์ประกอบ</td></tr>
-<tr><td>NFR-005</td><td>Availability</td><td>ใช้งานผ่านเว็บบน Desktop, Tablet และ Mobile</td></tr>
-<tr><td>NFR-006</td><td>Backup</td><td>มีการสำรองข้อมูลและแนวทางกู้คืน</td></tr>
-<tr><td>NFR-007</td><td>Performance</td><td>หน้ารายการทั่วไปควรตอบสนองภายใน 3 วินาทีภายใต้ปริมาณข้อมูลที่ตกลง</td></tr>
-<tr><td>NFR-008</td><td>Maintainability</td><td>แยกส่วน Employee, Attendance, Leave, Advance และ Payroll ให้ดูแลต่อได้</td></tr>
-</tbody></table>
-<hr>
-<h2>8. Proposed Screens / Modules</h2>
+</ol>
+<hr/>
+<h2 id="7-non-functional-requirements">7. Non-Functional Requirements</h2>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-001</td>
+<td>Security</td>
+<td>ใช้ Authentication และ Role-Based Access Control</td>
+</tr>
+<tr>
+<td>NFR-002</td>
+<td>Data Privacy</td>
+<td>จำกัดการเห็นเงินเดือน บัญชีธนาคาร และข้อมูลส่วนบุคคลตามหน้าที่</td>
+</tr>
+<tr>
+<td>NFR-003</td>
+<td>Audit</td>
+<td>เก็บประวัติการสร้าง/แก้ไข/อนุมัติ/ยกเลิกรายการสำคัญ</td>
+</tr>
+<tr>
+<td>NFR-004</td>
+<td>Accuracy</td>
+<td>การคำนวณเงินเดือนต้องตรวจสอบย้อนกลับได้และมีรายละเอียดองค์ประกอบ</td>
+</tr>
+<tr>
+<td>NFR-005</td>
+<td>Availability</td>
+<td>ใช้งานผ่านเว็บบน Desktop, Tablet และ Mobile</td>
+</tr>
+<tr>
+<td>NFR-006</td>
+<td>Backup</td>
+<td>มีการสำรองข้อมูลและแนวทางกู้คืน</td>
+</tr>
+<tr>
+<td>NFR-007</td>
+<td>Performance</td>
+<td>หน้ารายการทั่วไปควรตอบสนองภายใน 3 วินาทีภายใต้ปริมาณข้อมูลที่ตกลง</td>
+</tr>
+<tr>
+<td>NFR-008</td>
+<td>Maintainability</td>
+<td>แยกส่วน Employee, Attendance, Leave, Advance และ Payroll ให้ดูแลต่อได้</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="8-proposed-screens-modules">8. Proposed Screens / Modules</h2>
 <ol>
 <li>Login</li>
-<ol>
 <li>Dashboard</li>
-<ol>
 <li>Employee List / Employee Detail</li>
-<ol>
 <li>Attendance Calendar / Attendance Daily</li>
-<ol>
 <li>Leave Request / Leave Approval / Leave Balance</li>
-<ol>
 <li>Absence &amp; Attendance Adjustment</li>
-<ol>
 <li>Salary Advance Request / Approval / Advance Ledger</li>
-<ol>
 <li>Payroll Period Setup</li>
-<ol>
 <li>Payroll Processing / Payroll Preview</li>
-<ol>
 <li>Payroll Approval / Payment Status</li>
-<ol>
 <li>Payslip</li>
-<ol>
 <li>Reports</li>
-<ol>
 <li>System Settings: Leave Types, Earnings, Deductions, Payroll Calendar, Approval Matrix</li>
-<ol>
 <li>Audit Log</li>
-<hr>
-<h2>9. Data Entities (Initial)</h2>
-<table><thead><tr><th>Entity</th><th>Key Data</th></tr></thead><tbody>
-<tr><td>employees</td><td>employee_code, name, position, employment_type, start_date, status</td></tr>
-<tr><td>employee_compensations</td><td>employee_id, pay_type, base_rate, effective_from, effective_to</td></tr>
-<tr><td>attendance_records</td><td>employee_id, work_date, check_in, check_out, status, source</td></tr>
-<tr><td>leave_types</td><td>name, paid_flag, entitlement_rule, active</td></tr>
-<tr><td>leave_requests</td><td>employee_id, leave_type_id, start_date, end_date, duration, reason, status</td></tr>
-<tr><td>leave_balances</td><td>employee_id, leave_type_id, year, entitled, used, remaining</td></tr>
-<tr><td>absence_records</td><td>employee_id, work_date, duration, reason, review_status</td></tr>
-<tr><td>salary_advances</td><td>employee_id, requested_amount, approved_amount, paid_amount, outstanding_amount, status</td></tr>
-<tr><td>advance_repayments</td><td>advance_id, payroll_period_id, amount, status</td></tr>
-<tr><td>payroll_periods</td><td>period_start, period_end, cutoff_date, payment_date, status</td></tr>
-<tr><td>payroll_transactions</td><td>employee_id, payroll_period_id, earning_total, deduction_total, net_pay</td></tr>
-<tr><td>payroll_items</td><td>payroll_transaction_id, item_type, item_code, amount, note</td></tr>
-<tr><td>payslips</td><td>payroll_transaction_id, generated_at, document_path</td></tr>
-<tr><td>approvals</td><td>reference_type, reference_id, approver_id, decision, comment, decided_at</td></tr>
-<tr><td>audit_logs</td><td>actor_id, action, entity, entity_id, before_data, after_data, created_at</td></tr>
-</tbody></table>
-<hr>
-<h2>10. System Independence</h2>
+</ol>
+<hr/>
+<h2 id="9-data-entities-initial">9. Data Entities (Initial)</h2>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Entity</th>
+<th>Key Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>employees</td>
+<td>employee_code, name, position, employment_type, start_date, status</td>
+</tr>
+<tr>
+<td>employee_compensations</td>
+<td>employee_id, pay_type, base_rate, effective_from, effective_to</td>
+</tr>
+<tr>
+<td>attendance_records</td>
+<td>employee_id, work_date, check_in, check_out, status, source</td>
+</tr>
+<tr>
+<td>leave_types</td>
+<td>name, paid_flag, entitlement_rule, active</td>
+</tr>
+<tr>
+<td>leave_requests</td>
+<td>employee_id, leave_type_id, start_date, end_date, duration, reason, status</td>
+</tr>
+<tr>
+<td>leave_balances</td>
+<td>employee_id, leave_type_id, year, entitled, used, remaining</td>
+</tr>
+<tr>
+<td>absence_records</td>
+<td>employee_id, work_date, duration, reason, review_status</td>
+</tr>
+<tr>
+<td>salary_advances</td>
+<td>employee_id, requested_amount, approved_amount, paid_amount, outstanding_amount, status</td>
+</tr>
+<tr>
+<td>advance_repayments</td>
+<td>advance_id, payroll_period_id, amount, status</td>
+</tr>
+<tr>
+<td>payroll_periods</td>
+<td>period_start, period_end, cutoff_date, payment_date, status</td>
+</tr>
+<tr>
+<td>payroll_transactions</td>
+<td>employee_id, payroll_period_id, earning_total, deduction_total, net_pay</td>
+</tr>
+<tr>
+<td>payroll_items</td>
+<td>payroll_transaction_id, item_type, item_code, amount, note</td>
+</tr>
+<tr>
+<td>payslips</td>
+<td>payroll_transaction_id, generated_at, document_path</td>
+</tr>
+<tr>
+<td>approvals</td>
+<td>reference_type, reference_id, approver_id, decision, comment, decided_at</td>
+</tr>
+<tr>
+<td>audit_logs</td>
+<td>actor_id, action, entity, entity_id, before_data, after_data, created_at</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="10-system-independence">10. System Independence</h2>
 <ul>
 <li>ระบบ Employee &amp; Payroll เป็นระบบภายในของบ้านคลองค้าไม้โดยเฉพาะ</li>
-<ul>
 <li>ไม่เชื่อมต่อหรือใช้ข้อมูลร่วมกับระบบของธุรกิจอื่น</li>
-<ul>
 <li>ข้อมูลพนักงาน การลงเวลา การลา การขาดงาน การเบิกล่วงหน้า และ Payroll จัดเก็บและบริหารภายในระบบนี้</li>
-<ul>
 <li>หากต้องการเชื่อมต่อระบบบัญชีหรือระบบอื่นในอนาคต ให้กำหนดเป็นขอบเขตงานเพิ่มเติมแยกต่างหาก</li>
-<hr>
-<h2>11. Acceptance Criteria</h2>
+</ul>
+<hr/>
+<h2 id="11-acceptance-criteria">11. Acceptance Criteria</h2>
 <ol>
 <li>HR สามารถเพิ่มพนักงานและกำหนดรูปแบบค่าจ้างได้</li>
-<ol>
 <li>พนักงานสามารถยื่นลาและตรวจสอบสถานะคำขอได้</li>
-<ol>
 <li>ผู้อนุมัติสามารถอนุมัติ/ปฏิเสธคำขอลาพร้อมบันทึกเหตุผลได้</li>
-<ol>
 <li>HR สามารถบันทึกและยืนยันการขาดงานได้</li>
-<ol>
 <li>พนักงานสามารถยื่นคำขอเบิกล่วงหน้าและติดตามยอดคงเหลือได้</li>
-<ol>
 <li>ระบบสามารถสร้าง Payroll ได้ 2 รอบต่อเดือนตามปฏิทินที่ตั้งค่า</li>
-<ol>
 <li>Payroll แสดงรายละเอียดรายได้ รายการหัก และยอดสุทธิรายบุคคลได้</li>
-<ol>
 <li>รายการเบิกล่วงหน้าที่ถึงกำหนดถูกนำไปหักโดยไม่หักซ้ำหรือเกินยอดคงเหลือ</li>
-<ol>
 <li>Payroll ที่ปิดรอบแล้วไม่สามารถแก้ไขโดยผู้ไม่มีสิทธิ์ได้</li>
-<ol>
 <li>พนักงานเห็นเฉพาะข้อมูลและ Payslip ของตนเอง</li>
-<ol>
 <li>ผู้มีสิทธิ์เรียกดูรายงานและ Audit Log ได้</li>
-<hr>
-<h2>12. Open Questions – ต้องยืนยันก่อนเริ่มพัฒนา</h2>
-<table><thead><tr><th>#</th><th>Topic</th><th>Decision Required</th></tr></thead><tbody>
-<tr><td>1</td><td>Payroll Period</td><td>ยืนยันรอบ 1–15 และ 16–สิ้นเดือน หรือใช้ช่วงอื่น</td></tr>
-<tr><td>2</td><td>Payment Date</td><td>จ่ายวันที่ 15 และวันสิ้นเดือน/วันทำการถัดไป หรือกำหนดวันอื่น</td></tr>
-<tr><td>3</td><td>Employee Types</td><td>มีพนักงานรายเดือน รายวัน รายเที่ยว หรือพาร์ทไทม์ประเภทใดบ้าง</td></tr>
-<tr><td>4</td><td>Salary Basis</td><td>เงินเดือนแบ่งจ่ายครึ่งหนึ่งต่อรอบ หรือคำนวณตามวันทำงานจริง</td></tr>
-<tr><td>5</td><td>Attendance</td><td>ลงเวลาด้วยตนเอง, HR บันทึก, Mobile Check-in หรือเชื่อมระบบอื่น</td></tr>
-<tr><td>6</td><td>Work Schedule</td><td>เวลาทำงานประจำ กะงาน วันหยุด และวันพักของคนขับ</td></tr>
-<tr><td>7</td><td>Leave Policy</td><td>ประเภทลา สิทธิวันลา การสะสม/ยกยอด และเอกสารประกอบ</td></tr>
-<tr><td>8</td><td>Unpaid Leave</td><td>วิธีคำนวณหักเงินลาไม่รับค่าจ้าง</td></tr>
-<tr><td>9</td><td>Absence</td><td>มาสาย/ขาดงานกี่นาทีหรือกี่ชั่วโมงจึงมีผลต่อค่าจ้าง</td></tr>
-<tr><td>10</td><td>Advance Policy</td><td>วงเงินสูงสุด เงื่อนไขอายุงาน และจำนวนครั้งที่ขอได้</td></tr>
-<tr><td>11</td><td>Advance Repayment</td><td>หักคืนเต็มจำนวนหรือแบ่งงวด และกรณีลาออก</td></tr>
-<tr><td>12</td><td>Overtime</td><td>มี OT หรือไม่ สูตรคำนวณและผู้อนุมัติ</td></tr>
-<tr><td>13</td><td>Employee Allowance</td><td>มีเบี้ยเลี้ยง ค่าเที่ยว ค่าคอมมิชชัน หรือค่าเดินทางหรือไม่</td></tr>
-<tr><td>14</td><td>Statutory Deductions</td><td>ต้องคำนวณภาษี ประกันสังคม และรายการตามกฎหมายในระบบหรือไม่</td></tr>
-<tr><td>15</td><td>Approval Matrix</td><td>ใครอนุมัติลา เบิกล่วงหน้า และ Payroll</td></tr>
-<tr><td>16</td><td>Payment Method</td><td>เงินสด โอนธนาคาร หรือหลายช่องทาง</td></tr>
-<tr><td>17</td><td>Payslip</td><td>ต้องการ PDF, HTML หรือทั้งสองรูปแบบ</td></tr>
-<tr><td>18</td><td>Historical Data</td><td>ต้องนำเข้าประวัติพนักงาน เวลา และเงินเดือนย้อนหลังหรือไม่</td></tr>
-</tbody></table>
-<hr>
-<h2>13. Recommended Implementation Baseline</h2>
+</ol>
+<hr/>
+<h2 id="12-open-questions-ต้องยืนยันก่อนเริ่มพัฒนา">12. Open Questions – ต้องยืนยันก่อนเริ่มพัฒนา</h2>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>#</th>
+<th>Topic</th>
+<th>Decision Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Payroll Period</td>
+<td>ยืนยันรอบ 1–15 และ 16–สิ้นเดือน หรือใช้ช่วงอื่น</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Payment Date</td>
+<td>จ่ายวันที่ 15 และวันสิ้นเดือน/วันทำการถัดไป หรือกำหนดวันอื่น</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Employee Types</td>
+<td>มีพนักงานรายเดือน รายวัน รายเที่ยว หรือพาร์ทไทม์ประเภทใดบ้าง</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Salary Basis</td>
+<td>เงินเดือนแบ่งจ่ายครึ่งหนึ่งต่อรอบ หรือคำนวณตามวันทำงานจริง</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Attendance</td>
+<td>ลงเวลาด้วยตนเอง, HR บันทึก, Mobile Check-in หรือเชื่อมระบบอื่น</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Work Schedule</td>
+<td>เวลาทำงานประจำ กะงาน วันหยุด และวันพักของคนขับ</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Leave Policy</td>
+<td>ประเภทลา สิทธิวันลา การสะสม/ยกยอด และเอกสารประกอบ</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Unpaid Leave</td>
+<td>วิธีคำนวณหักเงินลาไม่รับค่าจ้าง</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Absence</td>
+<td>มาสาย/ขาดงานกี่นาทีหรือกี่ชั่วโมงจึงมีผลต่อค่าจ้าง</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Advance Policy</td>
+<td>วงเงินสูงสุด เงื่อนไขอายุงาน และจำนวนครั้งที่ขอได้</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Advance Repayment</td>
+<td>หักคืนเต็มจำนวนหรือแบ่งงวด และกรณีลาออก</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Overtime</td>
+<td>มี OT หรือไม่ สูตรคำนวณและผู้อนุมัติ</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Employee Allowance</td>
+<td>มีเบี้ยเลี้ยง ค่าเที่ยว ค่าคอมมิชชัน หรือค่าเดินทางหรือไม่</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Statutory Deductions</td>
+<td>ต้องคำนวณภาษี ประกันสังคม และรายการตามกฎหมายในระบบหรือไม่</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Approval Matrix</td>
+<td>ใครอนุมัติลา เบิกล่วงหน้า และ Payroll</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Payment Method</td>
+<td>เงินสด โอนธนาคาร หรือหลายช่องทาง</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Payslip</td>
+<td>ต้องการ PDF, HTML หรือทั้งสองรูปแบบ</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Historical Data</td>
+<td>ต้องนำเข้าประวัติพนักงาน เวลา และเงินเดือนย้อนหลังหรือไม่</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="13-recommended-implementation-baseline">13. Recommended Implementation Baseline</h2>
 <p>อิงจากแนวทาง กิจการบ้านคลองค้าไม้ ที่กำหนดไว้ก่อนหน้า:</p>
 <ul>
 <li>Backend: PHP CodeIgniter 3</li>
-<ul>
 <li>Database: MySQL</li>
-<ul>
 <li>UI: Responsive Web</li>
-<ul>
 <li>Admin: Basic Admin</li>
-<ul>
 <li>Roles: Admin/Management, HR/Payroll, Approver, Employee</li>
-<ul>
 <li>Payroll: 2 รอบต่อเดือน โดยตั้งค่ารอบและวันจ่ายได้</li>
-<ul>
 <li>Approval: Workflow แบบพื้นฐาน</li>
-<ul>
 <li>Integration: เชื่อม Employee กับ ระบบบริหารงานภายใน ในระบบเดียวกัน</li>
-<ul>
 <li>Deployment: ใช้โครงสร้างเดียวกับระบบ กิจการบ้านคลองค้าไม้ โดยแยก Module และ Permission</li>
-<p>**หมายเหตุด้านเทคนิค:** หากโครงการหลักตัดสินใจเปลี่ยน Framework หรือ Architecture ให้ปรับ baseline นี้ตามข้อสรุปล่าสุดก่อนเริ่มพัฒนา</p>
-<hr>
-<h2>14. Sign-off</h2>
-<table><thead><tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr></thead><tbody>
-<tr><td>Business Owner</td><td></td><td></td><td></td></tr>
-<tr><td>Project Owner</td><td></td><td></td><td></td></tr>
-<tr><td>HR / Payroll Representative</td><td></td><td></td><td></td></tr>
-<tr><td>Technical Reviewer</td><td></td><td></td><td></td></tr>
-</tbody></table>
-<p>**เอกสารฉบับนี้เป็น Draft Requirement** เพื่อใช้ยืนยันขอบเขตและกติกาธุรกิจ ก่อนจัดทำ UI, Database Design, Test Cases และ Sprint Backlog</p></main></body></html>
+</ul>
+<p><strong>หมายเหตุด้านเทคนิค:</strong> หากโครงการหลักตัดสินใจเปลี่ยน Framework หรือ Architecture ให้ปรับ baseline นี้ตามข้อสรุปล่าสุดก่อนเริ่มพัฒนา</p>
+<hr/>
+<h2 id="14-sign-off">14. Sign-off</h2>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Name</th>
+<th>Signature</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business Owner</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Project Owner</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>HR / Payroll Representative</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Technical Reviewer</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>เอกสารฉบับนี้เป็น Draft Requirement</strong> เพื่อใช้ยืนยันขอบเขตและกติกาธุรกิจ ก่อนจัดทำ UI, Database Design, Test Cases และ Sprint Backlog</p>
+
+  </main>
+</div>
+<footer class="footer"><span>บ้านคลองค้าไม้ · Employee & Payroll Management System</span><span>Requirement Document · 1.0 (Draft for Review)</span></footer>
+<script>
+const search = document.getElementById('tocSearch');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('#tocList a').forEach(a => {
+    a.style.display = a.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
